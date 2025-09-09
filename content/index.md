@@ -1,5 +1,6 @@
 ---
-title: Welcome to Quartz
+title: vasilisa shcherbakova | game designer
+description: ui/ux design, level design
 ---
 
 This is a blank Quartz installation.
