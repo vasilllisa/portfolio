@@ -24,13 +24,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
-      - run: npm ci || npm install
-      - run: npx quartz build
+      - name: Install deps
+        run: |
+          corepack enable || true
+          corepack prepare pnpm@latest-9 --activate || true
+          if [ -f pnpm-lock.yaml ]; then pnpm install; else npm ci || npm install; fi
+      - name: Build Quartz
+        run: |
+          npx quartz build || pnpm dlx quartz build
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
