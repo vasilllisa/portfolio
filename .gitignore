@@ -11,6 +11,3 @@ replit.nix
 
 # ignore build output
 public/
-
-*.mp4
-publick/
