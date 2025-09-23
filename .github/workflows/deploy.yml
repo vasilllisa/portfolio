@@ -23,15 +23,15 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
+          check-latest: true
+      - name: Upgrade npm to >=10.9.2
+        run: npm i -g npm@latest
       - name: Install deps
         run: |
-          corepack enable || true
-          corepack prepare pnpm@latest-9 --activate || true
-          if [ -f pnpm-lock.yaml ]; then pnpm install; else npm ci || npm install; fi
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
       - name: Build Quartz
-        run: |
-          npx quartz build || pnpm dlx quartz build
+        run: npx quartz build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
