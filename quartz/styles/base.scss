@@ -631,3 +631,171 @@ iframe.pdf {
   transition: width 0.2s ease;
   z-index: 9999;
 }
+
+
+
+/* Figure captions: center media, caption width follows media size */
+main article figure.caption,
+.page article figure.caption,
+#quartz-body article figure.caption {
+  display: grid !important;
+  justify-items: center !important;
+  gap: 0.25rem !important;                 /* spacing between image/video and caption */
+  width: fit-content !important;           /* shrink figure to fit its content */
+  max-width: 100% !important;              /* prevent overflow beyond column */
+  margin: 0 auto 0.75rem auto !important;  /* center figure block in layout */
+}
+
+main article figure.caption > img,
+.page article figure.caption > img,
+#quartz-body article figure.caption > img,
+main article figure.caption > video,
+.page article figure.caption > video,
+#quartz-body article figure.caption > video {
+  display: block !important;
+  margin: 0 auto !important;               /* center media inside figure */
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Remove theme spacing inside figure, keep tight grouping */
+main article figure.caption > * + *,
+.page article figure.caption > * + *,
+#quartz-body article figure.caption > * + * {
+  margin-top: 0 !important;
+}
+
+/* Captions inherit figure width, wrap text as needed */
+main article figure.caption > figcaption,
+.page article figure.caption > figcaption,
+#quartz-body article figure.caption > figcaption {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-style: italic !important;
+  font-size: 0.9rem !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+  opacity: 0.85 !important;
+  width: 100% !important;                  /* align caption width with figure width */
+  overflow-wrap: anywhere !important;      /* break long tokens when necessary */
+}
+
+/* Optional: remove italics for specific figures */
+main article figure.caption.roman > figcaption,
+.page article figure.caption.roman > figcaption,
+#quartz-body article figure.caption.roman > figcaption {
+  font-style: normal !important;
+}
+
+/* Alignment utilities for figures */
+main article figure.caption.align-left,
+.page article figure.caption.align-left,
+#quartz-body article figure.caption.align-left {
+  justify-items: start !important;
+  text-align: left !important;
+}
+main article figure.caption.align-left > img,
+.page article figure.caption.align-left > img,
+#quartz-body article figure.caption.align-left > img {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+main article figure.caption.align-right,
+.page article figure.caption.align-right,
+#quartz-body article figure.caption.align-right {
+  justify-items: end !important;
+  text-align: right !important;
+}
+main article figure.caption.align-right > img,
+.page article figure.caption.align-right > img,
+#quartz-body article figure.caption.align-right > img {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* Explicit center alignment, identical to default */
+main article figure.caption.align-center,
+.page article figure.caption.align-center,
+#quartz-body article figure.caption.align-center {
+  justify-items: center !important;
+  text-align: center !important;
+}
+main article figure.caption.align-center > img,
+.page article figure.caption.align-center > img,
+#quartz-body article figure.caption.align-center > img {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Floating figures: wrap text around left or right aligned media */
+main article figure.caption.float-left,
+.page article figure.caption.float-left,
+#quartz-body article figure.caption.float-left {
+  float: left !important;
+  margin: 0.25rem 1rem 0.75rem 0 !important;
+  max-width: min(50%, 520px) !important;
+}
+main article figure.caption.float-right,
+.page article figure.caption.float-right,
+#quartz-body article figure.caption.float-right {
+  float: right !important;
+  margin: 0.25rem 0 0.75rem 1rem !important;
+  max-width: min(50%, 520px) !important;
+}
+/* Clear floats at the end of article content */
+main article::after,
+.page article::after,
+#quartz-body article::after {
+  content: "" !important;
+  display: block !important;
+  clear: both !important;
+}
+
+/* Standalone images in a paragraph are centered by default */
+main article p > img:only-child,
+main article p > a:only-child > img,
+.page article p > img:only-child,
+.page article p > a:only-child > img,
+#quartz-body article p > img:only-child,
+#quartz-body article p > a:only-child > img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Support Obsidian-style image fragments: ![[img#center|500]] etc. */
+main article a[href*="#center"],
+main article a[href*="#left"],
+main article a[href*="#right"] { display: block !important; }
+
+main article img[src*="#center"],
+main article a[href*="#center"] > img {
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+main article img[src*="#left"],
+main article a[href*="#left"] > img {
+  display: block !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+main article img[src*="#right"],
+main article a[href*="#right"] > img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Utility classes for bare <img> elements */
+main article img.align-left   { display: block !important; margin-left: 0 !important;    margin-right: auto !important; }
+main article img.align-right  { display: block !important; margin-left: auto !important; margin-right: 0 !important; }
+main article img.align-center { display: block !important; margin-left: auto !important; margin-right: auto !important; }

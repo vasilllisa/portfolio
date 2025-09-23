@@ -1,0 +1,118 @@
+/* Project tag cards, fixed image box, no overlap, no stray gaps */
+
+.tag-projects {
+  --gap: 1rem;
+  --radius: .75rem;
+  --shadow: 0 1px 2px rgba(0,0,0,.08);
+  --border: color-mix(in oklab, currentColor 10%, transparent);
+}
+
+/* Grid */
+.tag-projects .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--gap);
+  margin-block: 1rem 2rem;
+}
+
+/* Card shell, kill any theme padding/margins on children */
+.tag-projects .card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Ensure first child (thumb) is flush with top, no gap */
+.tag-projects .card > :first-child {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+/* Image area, fills the entire top row */
+.tag-projects .thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  line-height: 0;
+  background: transparent;
+  z-index: 0;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Make the images fill the box exactly */
+.tag-projects .thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: opacity .18s ease-in-out, transform .18s ease-in-out;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0;
+}
+
+/* Swap still <-> gif on hover or keyboard focus of the image link only */
+.tag-projects .thumb img.gif { opacity: 0; }
+.tag-projects .thumb:hover img.gif,
+.tag-projects .thumb:focus-visible img.gif { opacity: 1; }
+.tag-projects .thumb:hover img.still,
+.tag-projects .thumb:focus-visible img.still { opacity: 0; }
+
+/* Meta block, never overlaps the image */
+.tag-projects .meta {
+  position: relative;            /* new stacking context above image */
+  z-index: 1;
+  padding: .75rem .9rem .9rem;
+  display: grid;
+  gap: .45rem;
+  background: transparent;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+/* Title and links */
+.tag-projects .title { margin: 0; font-size: 1rem; line-height: 1.3; }
+.tag-projects .title a { text-decoration: none; }
+.tag-projects .title a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* Second line: date range • duration */
+.tag-projects .line2 { color: var(--darkgray); font-size: .9rem; }
+
+/* Team line */
+.tag-projects .team { color: var(--darkgray); font-size: .9rem; }
+
+/* Description */
+.tag-projects .summary { margin: 0; opacity: .95; font-size: .95rem; }
+
+/* Tags, one line with ellipsis */
+.tag-projects .tags {
+  display: inline-flex;
+  gap: .35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tag-projects .tags.one-line { flex-wrap: nowrap; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tag-projects .tags li a {
+  display: inline-block;
+  padding: .15rem .45rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  font-size: .75rem;
+  opacity: .9;
+}

@@ -116,6 +116,35 @@ function createFolderNode(
     const button = titleContainer.querySelector(".folder-button") as HTMLElement
     const a = document.createElement("a")
     a.href = resolveRelative(currentSlug, folderPath)
+
+// Redirect specific folder names to real tag pages. ///////////////////////////
+const FOLDER_TO_TAG: Record<string, string> = Object.freeze({
+  "LEVEL DESIGN": "level-design",
+  "UIUX DESIGN": "uiux-design",
+})
+
+const rawName = node.displayName ?? ""
+const key = rawName.toUpperCase().replace(/\s+/g, " ").trim()
+const tagSlug = FOLDER_TO_TAG[key]
+
+if (tagSlug) {
+  // no trailing slash to avoid 302
+  a.href = `/tags/${tagSlug}`
+
+  // stop the explorer’s toggle handler from hijacking navigation
+  const stop = (ev: Event) => {
+    ev.stopPropagation()
+    ;(ev as any).stopImmediatePropagation?.()
+    // do not call preventDefault, we want the link to navigate
+  }
+  a.addEventListener("mousedown", stop, { capture: true })
+  a.addEventListener("click", stop, { capture: true })
+} else {
+  a.href = resolveRelative(currentSlug, folderPath)
+}
+///////////////////////////////////////////////////////////////////////////////
+ 
+
     a.dataset.for = folderPath
     a.className = "folder-title"
     a.textContent = node.displayName
