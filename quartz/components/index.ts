@@ -24,7 +24,6 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 
-import HomeGraph from "./HomeGraph"
 import RightTags from "./RightTags"
 
 export {
@@ -54,6 +53,5 @@ export {
   Flex,
   ConditionalRender,
   
-  HomeGraph,
   RightTags,
 }
