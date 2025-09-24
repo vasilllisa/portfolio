@@ -5,14 +5,7 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [
-  // Large graph only on homepage
-  Component.ConditionalRender({
-    component: Component.HomeGraph(),
-    condition: (page) => page.fileData.slug === "index",
-}),
-
-  ],
+  afterBody: [],
   footer: Component.Footer({
     links: {
       //GitHub: "https://github.com/jackyzha0/quartz",
@@ -47,16 +40,12 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer(),
   ],
-right: [
-    // Small graph on non-home pages only
-    Component.ConditionalRender({
-      component: Component.Graph(),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
-    Component.DesktopOnly(Component.TableOfContents()),
-    // New vertical tag list, all content pages including index
-    Component.RightTags(),
+right: [ 
+    // Small graph on all pages, including index 
+    Component.Graph(), 
+    Component.DesktopOnly(Component.TableOfContents()), 
     Component.Backlinks(),
+    Component.RightTags(), 
   ],
 }
 
@@ -80,6 +69,7 @@ export const defaultListPageLayout: PageLayout = {
   right: [
     // Keep  graph available on list pages like tags or folders
     Component.Graph(),
+    Component.DesktopOnly(Component.TableOfContents()),
     Component.RightTags(),
   ],
 }

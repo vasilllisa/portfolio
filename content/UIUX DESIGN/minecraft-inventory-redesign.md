@@ -11,6 +11,7 @@ discipline: uiux-design
 tags:
   - uiux-design
   - figma
+  - google-forms
 thumb: /static/content/thumbs/minecraft.png
 gif: /static/content/gifs/minecraft.gif
 ---

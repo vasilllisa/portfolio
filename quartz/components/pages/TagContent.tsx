@@ -202,7 +202,8 @@ export default ((opts?: Partial<TagContentOptions>) => {
       const items = pages
         .map((f) => {
           const fm = (f.frontmatter ?? {}) as FM
-          const href = "/" + f.slug
+          //const href = "/" + f.slug
+          const href = resolveRelative(fileData.slug!, f.slug as FullSlug)
           const s = parseDate(fm.start)
           const e = parseDate(fm.end)
 
@@ -260,9 +261,18 @@ export default ((opts?: Partial<TagContentOptions>) => {
                     {it.summary && <p class="summary">{it.summary}</p>}
                     {it.tags?.length ? (
                       <ul class="tags one-line" aria-label="Tags">
-                        {it.tags.map((t) => (
-                          <li><a href={`/tags/${t}`}>#{t}</a></li>
+                        
+                        {it.tags.map((t) => ( 
+                          <li> 
+                            <a 
+                              class="internal tag-link" 
+                              href={resolveRelative(fileData.slug!, `tags/${t}` as FullSlug)} 
+                            > 
+                              {t} 
+                            </a> 
+                          </li> 
                         ))}
+                        
                       </ul>
                     ) : null}
                   </div>

@@ -74,10 +74,11 @@
 
 /* Meta block, never overlaps the image */
 .tag-projects .meta {
-  position: relative;            /* new stacking context above image */
+  position: relative;
   z-index: 1;
   padding: .75rem .9rem .9rem;
-  display: grid;
+  display: flex;                  // CHANGED: grid -> flex
+  flex-direction: column;         // Stack children vertically
   gap: .45rem;
   background: transparent;
   border-bottom-left-radius: inherit;
@@ -98,15 +99,27 @@
 /* Description */
 .tag-projects .summary { margin: 0; opacity: .95; font-size: .95rem; }
 
-/* Tags, one line with ellipsis */
+/* Tags, one line with horizontal scroll */
 .tag-projects .tags {
-  display: inline-flex;
-  gap: .35rem;
+  display: flex;                  // CHANGED: inline-flex -> flex
+  flex-wrap: nowrap;              // Prevent wrapping
+  white-space: nowrap;            // Prevent line breaks
+  overflow-x: auto;               // Allow horizontal scroll if needed
+  overflow-y: hidden;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.tag-projects .tags.one-line { flex-wrap: nowrap; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tag-projects .tags.one-line {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tag-projects .tags li {
+  flex: 0 0 auto;                 // Prevent shrinking/wrapping
+}
 .tag-projects .tags li a {
   display: inline-block;
   padding: .15rem .45rem;
@@ -115,4 +128,13 @@
   text-decoration: none;
   font-size: .75rem;
   opacity: .9;
+  white-space: nowrap;            // Prevent line breaks in tag names
+  hyphens: none;                  // Prevent breaking at hyphens
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+}
+
+/* Pin tag list to bottom of .meta */
+.tag-projects .tags {
+  margin-top: auto;               // Push tags to bottom of .meta
 }
