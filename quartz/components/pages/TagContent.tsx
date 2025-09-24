@@ -222,18 +222,17 @@ export default ((opts?: Partial<TagContentOptions>) => {
             range: fmtRange(s, e),
             duration: fmtDuration(s, e),
             team: formatTeam(fm.team),
+            startDate: s, // Use parsed start date for sorting
           }
         })
-        // Sort by end date, then start date, newest first. Missing dates go last.
+        // Sort by descending start date (most recent first). Missing dates go last.
         .sort((a, b) => {
-          const ad = parseDate((pages.find(p => "/"+p.slug === a.href)?.frontmatter as any)?.end)
-                  || parseDate((pages.find(p => "/"+p.slug === a.href)?.frontmatter as any)?.start)
-          const bd = parseDate((pages.find(p => "/"+p.slug === b.href)?.frontmatter as any)?.end)
-                  || parseDate((pages.find(p => "/"+p.slug === b.href)?.frontmatter as any)?.start)
-          if (!ad && !bd) return 0
-          if (!ad) return 1
-          if (!bd) return -1
-          return ad.getTime() < bd.getTime() ? 1 : ad.getTime() > bd.getTime() ? -1 : 0
+          if (a.startDate && b.startDate) {
+            return b.startDate.getTime() - a.startDate.getTime()
+          }
+          if (a.startDate) return -1
+          if (b.startDate) return 1
+          return 0
         })
 
       // Render as card grid

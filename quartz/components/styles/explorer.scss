@@ -268,3 +268,42 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
     overscroll-behavior: none;
   }
 }
+
+/* --- Explorer sidebar: adaptive spacing for wrapped project titles --- */
+
+/* Default: larger gap between entries */
+.explorer-content ul li > a {
+  display: block;
+  margin-bottom: 0.6rem; // normal gap between entries
+  line-height: 1.1rem;
+  transition: margin-bottom 0.2s;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Reduce margin if title wraps to multiple lines (modern browsers only) */
+@supports (selector(:has(*))) {
+  .explorer-content ul li:has(> a:has(br)),
+  .explorer-content ul li:has(> a:has(span[style*="white-space:pre-line"])) {
+    /* If the title contains a <br> or is styled for pre-line, it's wrapped */
+    & > a {
+      margin-bottom: 0.25rem !important; // tighter gap for wrapped titles
+    }
+  }
+
+  /* More robust: detect if <a> has more than one line using line-clamp (not for detection, but for fallback) */
+  .explorer-content ul li > a.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.25rem;
+    line-clamp: 2;           // Add standard property for compatibility
+    box-orient: vertical;    // Add standard property for compatibility
+  }
+}
+
+/* Optional: utility class for forced tight spacing (manual override) */
+.explorer-content ul li.tight > a {
+  margin-bottom: 0.25rem !important;
+}

@@ -1,5 +1,5 @@
 ---
-title: diegetic-game-menu
+title: "Windmill Menu: Diegetic Prototype"
 start: 2024-01-23
 end: 2024-01-30
 team: Solo
@@ -12,8 +12,9 @@ tags:
   - uiux-design
   - unity
   - figma
-thumb: /static/content/thumbs/diegeticmenu.png
-gif: /static/content/gifs/diegeticmenu.gif
+thumb: /static/content/thumbs/diegeticmenu.jpg
+gif: /static/content/gifs/diegeticmenu.webp
+---
 ---
 ## **Overview**
 

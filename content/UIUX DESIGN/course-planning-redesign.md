@@ -1,5 +1,5 @@
 ---
-title: course-planning-redesign
+title: "Course Planner: Streamlined Scheduling Redesign"
 start: 2023-09-01
 end: 2023-09-21
 team: Solo
@@ -11,8 +11,9 @@ discipline: uiux-design
 tags:
   - uiux-design
   - figma
-thumb: /static/content/thumbs/courseplanning.png
-gif: /static/content/gifs/courseplanning.gif
+thumb: /static/content/thumbs/courseplanning.jpg
+gif: /static/content/gifs/courseplanning.webp
+---
 ---
 ## **Overview**
 

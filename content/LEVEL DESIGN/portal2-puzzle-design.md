@@ -1,5 +1,5 @@
 ---
-title: portal2-puzzle-design
+title: "Portal 2: Fast-Paced Puzzle Design Beyond Gels"
 start: 2023-04-01
 end: 2023-04-12
 team: Solo
@@ -10,8 +10,8 @@ discipline: level-design
 tags:
   - portal2-puzzlemaker
   - level-design
-thumb: /static/content/thumbs/portal2.png
-gif: /static/content/gifs/portal2.gif
+thumb: /static/content/thumbs/portal2.jpg
+gif: /static/content/gifs/portal2.webp
 ---
 ---
 ## **Overview**
