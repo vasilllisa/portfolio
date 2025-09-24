@@ -206,13 +206,18 @@ export default ((opts?: Partial<TagContentOptions>) => {
           const s = parseDate(fm.start)
           const e = parseDate(fm.end)
 
+          // --- Asset path fix ---
+          const baseUrl = cfg.baseUrl ?? ""
+          const thumb = fm.thumb ? resolveAssetUrl(fm.thumb, baseUrl) : ""
+          const gif = fm.gif ? resolveAssetUrl(fm.gif, baseUrl) : ""
+
           return {
             href,
             title: fm.title || f.slug?.split("/").pop() || "",
             summary: fm.description || fm.summary || "",
             tags: Array.isArray(fm.tags) ? fm.tags : [],
-            thumb: fm.thumb || "",
-            gif: fm.gif || "",
+            thumb,
+            gif,
             range: fmtRange(s, e),
             duration: fmtDuration(s, e),
             team: formatTeam(fm.team),
@@ -274,3 +279,18 @@ export default ((opts?: Partial<TagContentOptions>) => {
   TagContent.css = concatenateResources(style, PageList.css, projectTagCards)
   return TagContent
 }) satisfies QuartzComponentConstructor
+
+/**
+ * Utility to prefix asset URLs with baseUrl if needed.
+ * Handles leading slashes and avoids double slashes.
+ */
+function resolveAssetUrl(src: string, baseUrl: string): string {
+  if (!src) return src
+  // Only rewrite if src starts with "/static/"
+  if (src.startsWith("/static/")) {
+    // Ensure baseUrl ends with "/" and src does not have double slash
+    const base = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl
+    return `${base}${src}`
+  }
+  return src
+}
