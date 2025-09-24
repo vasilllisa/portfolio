@@ -32,3 +32,10 @@
     }
   }
 }
+
+/* Hide ReaderMode toggle on phone */
+.readermode {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
