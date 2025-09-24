@@ -1,6 +1,7 @@
 import { FileTrieNode } from "../../util/fileTrie"
 import { FullSlug, resolveRelative, simplifySlug } from "../../util/path"
 import { ContentDetails } from "../../plugins/emitters/contentIndex"
+import type { SimpleSlug } from "../../util/path"
 
 type MaybeHTMLElement = HTMLElement | undefined
 
@@ -129,7 +130,8 @@ const tagSlug = FOLDER_TO_TAG[key]
 
 if (tagSlug) {
   // no trailing slash to avoid 302
-  a.href = `/tags/${tagSlug}`
+  const tagTarget = (`tags/${tagSlug}`) as SimpleSlug
+  a.href = resolveRelative(currentSlug, tagTarget)
 
   // stop the explorer’s toggle handler from hijacking navigation
   const stop = (ev: Event) => {
