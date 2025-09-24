@@ -1,5 +1,5 @@
 ---
-title: kinesthetic-feel
+title: "Lake Leota: Kinesthetic Fear Design"
 start: 2024-03-01
 end: 2024-03-21
 team: Solo
@@ -10,8 +10,8 @@ discipline: uiux-design
 tags:
   - uiux-design
   - unity
-thumb: /static/content/thumbs/kinesthetic.png
-gif: /static/content/gifs/kinesthetic.gif
+thumb: /static/content/thumbs/kinesthetic.jpg
+gif: /static/content/gifs/kinesthetic.webp
 ---
 ---
 ## **Overview**

@@ -1,5 +1,5 @@
 ---
-title: cs2-map
+title: "de_exhibit: Competitive Museum Map for CS2"
 start: 2024-09-01
 end: 2024-12-01
 team: Solo
@@ -10,8 +10,8 @@ discipline: level-design
 tags:
   - hammer-editor
   - level-design
-thumb: /static/content/thumbs/cs2.png
-gif: /static/content/gifs/cs2.gif
+thumb: /static/content/thumbs/cs2.jpg
+gif: /static/content/gifs/cs2.webp
 ---
 ---
 ## **Overview**

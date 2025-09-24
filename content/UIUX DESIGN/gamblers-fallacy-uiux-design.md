@@ -1,5 +1,5 @@
 ---
-title: gamblers-fallacy-uiux-design
+title: "Gambler’s Fallacy: Poker-Themed Interface"
 start: 2025-01-01
 end: 2025-04-01
 team: "10"
@@ -13,9 +13,9 @@ tags:
   - unity
   - figma
 thumb: /static/content/thumbs/gamblers.png
-gif: /static/content/gifs/gamblers.gif
+gif: /static/content/gifs/gamblers.webp
 ---
-
+---
 ## **Overview**
 
 _Gambler’s Fallacy_ is an isometric roguelike where combat and interface are built around poker mechanics. Every attack is a card drawn from the deck, and combinations like flushes or straights amplify effects. The UI extends this theme, with menus and HUD elements designed to function as part of the world rather than separate overlays.

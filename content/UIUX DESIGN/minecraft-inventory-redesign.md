@@ -1,8 +1,8 @@
 ---
-title: minecraft-inventory-redesign
+title: "Minecraft on iPad: Child-Centered Inventory UX"
 start: 2023-10-01
 end: 2023-10-21
-team: "Solo"
+team: Solo
 description: Redesign of Minecraft's inventory system to improve accessibility for young players.
 software:
   - figma
@@ -12,10 +12,10 @@ tags:
   - uiux-design
   - figma
   - google-forms
-thumb: /static/content/thumbs/minecraft.png
-gif: /static/content/gifs/minecraft.gif
+thumb: /static/content/thumbs/minecraft.jpg
+gif: /static/content/gifs/minecraft.webp
 ---
-
+---
 ## **Overview**
 
 This project reimagines the **Minecraft inventory system on iPad**, with a focus on younger players who often struggle with cluttered layouts and confusing item management. Over the course of one month, I researched how kids interact with the game, identified pain points in the existing system, and prototyped a redesign that makes inventory more intuitive and accessible without losing the depth of the original game.

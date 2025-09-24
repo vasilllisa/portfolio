@@ -1,5 +1,5 @@
 ---
-title: remanence-level-design
+title: "Remanence: Architecting a Haunted World"
 start: 2024-09-01
 end: 2024-12-01
 team: "21"
@@ -12,8 +12,8 @@ tags:
   - unreal-engine
   - figma
   - level-design
-thumb: /static/content/thumbs/remanence_level.png
-gif: /static/content/gifs/remanence_level.gif
+thumb: /static/content/thumbs/remanence_level.jpg
+gif: /static/content/gifs/remanence_level.webp
 ---
 ---
 ## **Overview**

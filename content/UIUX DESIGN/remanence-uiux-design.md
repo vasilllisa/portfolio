@@ -1,5 +1,5 @@
 ---
-title: remanence-uiux-design
+title: "Remanence: Information Flow and Combat Readability"
 start: 2023-09-01
 end: 2024-04-01
 team: "18"
@@ -12,8 +12,8 @@ tags:
   - unreal-engine
   - figma
   - uiux-design
-thumb: /static/content/thumbs/remanence_uiux.png
-gif: /static/content/gifs/remanence_uiux.gif
+thumb: /static/content/thumbs/remanence_uiux.jpg
+gif: /static/content/gifs/remanence_uiux.webp
 ---
 ---
 ## **Overview**
