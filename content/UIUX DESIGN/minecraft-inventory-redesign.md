@@ -9,9 +9,9 @@ software:
   - google-forms
 discipline: uiux-design
 tags:
-  - uiux-design
   - figma
   - google-forms
+  - uiux-design
 thumb: /static/content/thumbs/minecraft.jpg
 gif: /static/content/gifs/minecraft.webp
 ---

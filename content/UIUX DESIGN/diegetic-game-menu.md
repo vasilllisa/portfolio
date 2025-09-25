@@ -9,9 +9,9 @@ software:
   - figma
 discipline: uiux-design
 tags:
-  - uiux-design
   - unity
   - figma
+  - uiux-design
 thumb: /static/content/thumbs/diegeticmenu.jpg
 gif: /static/content/gifs/diegeticmenu.webp
 ---
@@ -24,7 +24,17 @@ Working solo, I sketched, prototyped, and implemented the system in Unity. The f
 
 The result was a functioning Unity prototype with animated windmill navigation, dynamic transitions for each button, and a pause menu system integrated directly into the environment.
 
-![[GameMenuShowcase.mp4]]
+---
+
+<div style="padding:56.25% 0 0 0;position:relative;">
+  <iframe 
+    src="https://player.vimeo.com/video/1121705690?badge=0&autopause=0&player_id=0&app_id=58479" 
+    frameborder="0" 
+    allow="autoplay; fullscreen; picture-in-picture" 
+    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+    title="Windmill Menu: Diegetic Interface Showcase">
+  </iframe>
+</div>
 
 ---
 ## **Market Research**
@@ -96,13 +106,10 @@ Each of these steps shaped the Unity prototype. By the time I moved into engine,
 
 In Unity, the menu came to life as the windmill reacted to every button press with camera shifts and animated transitions. Each screen -- Options, Credits, CODA, Pause -- was built as part of the same world space, so moving between them felt like a physical motion rather than a scene change. I created 21 animations to handle interactions and menu transitions, from the windmill rotation on Start to the descent sequence on Quit. Building and tuning those sequences pushed me deeper into Unity’s animation system and gave me room to refine timing, responsiveness, and visual consistency.
 
-<figure class="caption">
-  <video src="GameMenu_InEngine.mp4" width="500" controls></video>
-  <figcaption>In-engine prototype showing how the windmill and camera dynamically react to each menu selection.</figcaption>
-</figure>
+---
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1121711493?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Windmill Menu In-Engine"></iframe></div>
 
 ---
-
 ## **Playtesting**
 
 I ran six playtests to see how the menu held up outside of my own screen. The core idea landed immediately -- everyone liked the windmill as the centerpiece, and small details like debris, swaying signs, and underwater credits made the system feel alive. Animations were often described as smooth or even “fantastic,” and the consistent motion helped the interface feel more like part of the world than a static overlay.

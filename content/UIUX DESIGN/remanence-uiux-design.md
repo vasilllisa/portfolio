@@ -9,9 +9,9 @@ software:
   - figma
 discipline: uiux-design
 tags:
+  - uiux-design
   - unreal-engine
   - figma
-  - uiux-design
 thumb: /static/content/thumbs/remanence_uiux.jpg
 gif: /static/content/gifs/remanence_uiux.webp
 ---
@@ -86,15 +86,23 @@ These updates ensured the HUD’s look reinforced the art direction without comp
 ### **Interaction**
 To reinforce feedback during combat, I designed animated crosshair concepts inspired by _Dark and Darker_. I prototyped them in Figma to communicate the interaction intent, then validated the animations in Unreal Engine with Blueprints. These tests proved the responsiveness worked in-game and were later integrated into the main project.
 
+<div style="padding:56.25% 0 0 0;position:relative;">
+  <iframe 
+    src="https://player.vimeo.com/video/1121711999?badge=0&autopause=0&player_id=0&app_id=58479" 
+    frameborder="0" 
+    allow="autoplay; fullscreen; picture-in-picture" 
+    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+    title="Crosshair Feedback Prototype: Unreal Engine Implementation">
+  </iframe>
+</div>
 
-![[Remanence_UEPrototype.mp4|500]]
-
-
+---
 <figure class="caption">
   <img src="Remanence_FigmaV2.png" width="800" alt="Figma crosshair prototype">
   <figcaption>Figma prototype for crosshair feedback.</figcaption>
 </figure>
 
+---
 
   <figure class="caption">
   <img src="Remanence_PNG_UEBlueprintsOrganized.png" width="800" alt="">

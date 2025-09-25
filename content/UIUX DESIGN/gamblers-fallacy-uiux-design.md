@@ -9,9 +9,9 @@ software:
   - figma
 discipline: uiux-design
 tags:
-  - uiux-design
   - unity
   - figma
+  - uiux-design
 thumb: /static/content/thumbs/gamblers.png
 gif: /static/content/gifs/gamblers.webp
 ---

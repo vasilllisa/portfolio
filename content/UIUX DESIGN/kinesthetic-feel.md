@@ -8,8 +8,8 @@ software:
   - unity
 discipline: uiux-design
 tags:
-  - uiux-design
   - unity
+  - uiux-design
 thumb: /static/content/thumbs/kinesthetic.jpg
 gif: /static/content/gifs/kinesthetic.webp
 ---
@@ -22,16 +22,13 @@ gif: /static/content/gifs/kinesthetic.webp
 
 The goal was to create a short first person slice where thalassophobia is felt directly through play rather than explained through description. I achieved this through shivering dock cameras, underwater input resistance, heartbeat timed vibrations, muffled audio transitions, and silhouettes surfacing from darkness.
 
+---
 
-<figure class="caption">
-  <video src="LakeLeota_Commentary.mp4" width="500" controls></video>
-  <figcaption>Commentary walkthrough explaining the design process and kinesthetic choices.</figcaption>
-</figure>
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1121707293?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Lake Leota: Designing Kinesthetic Fear (Commentary)"></iframe></div>
 
-<figure class="caption">
-  <video src="LakeLeota_Playthrough.mp4" width="500" controls></video>
-  <figcaption>Uninterrupted playthrough capturing the experience as a player would encounter it.</figcaption>
-</figure>
+---
+
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1121708958?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Lake Leota (Playthrough)"></iframe></div>
 
 
 ---

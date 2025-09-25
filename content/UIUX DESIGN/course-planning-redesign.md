@@ -9,8 +9,8 @@ software:
   - google-forms
 discipline: uiux-design
 tags:
-  - uiux-design
   - figma
+  - uiux-design
 thumb: /static/content/thumbs/courseplanning.jpg
 gif: /static/content/gifs/courseplanning.webp
 ---
