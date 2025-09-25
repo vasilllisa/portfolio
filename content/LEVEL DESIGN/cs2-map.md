@@ -1,5 +1,5 @@
 ---
-title: "de_exhibit: Competitive Museum Map for CS2"
+title: "CS2: Competitive Museum Map"
 start: 2024-09-01
 end: 2024-12-01
 team: Solo
