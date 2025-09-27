@@ -8,8 +8,8 @@ software:
 discipline: narrative-design
 tags:
   - narrative-design
-thumb: /static/content/thumbs/cotl_gnr.jpg
-gif: /static/content/gifs/cotl_gnr.webp
+thumb: /static/content/thumbs/cotl.png
+gif: /static/content/gifs/cotl.webp
 ---
 ---
 
