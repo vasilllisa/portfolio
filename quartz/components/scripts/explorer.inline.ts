@@ -122,6 +122,7 @@ function createFolderNode(
 const FOLDER_TO_TAG: Record<string, string> = Object.freeze({
   "LEVEL DESIGN": "level-design",
   "UIUX DESIGN": "uiux-design",
+  "NARRATIVE DESIGN": "narrative-design",
 })
 
 const rawName = node.displayName ?? ""
