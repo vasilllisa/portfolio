@@ -319,52 +319,45 @@ html[saved-theme="dark"] .floor-selector {
 .page > .content .floor-selector,
 .article > .content .floor-selector { margin-inline: auto; }
 
-/* ============================================
-   Page title icon: fill up and drain down
-   ============================================ */
+/* ==========================================================
+   Page title icon: centered, responsive, hover color change
+   ========================================================== */
 
-/* container */
-.page-title { margin: 0; text-align: center; }
-.page-title-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
-
-/* masked icon, base color via background-color, highlight via top gradient */
-.page-title-icon.is-masked {
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-
-  /* mask longhands, driven by --icon-url from TSX */
-  -webkit-mask-image: var(--icon-url);
-  mask-image: var(--icon-url);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-
-  /* base color always present */
-  background-color: var(--secondary);
-
-  /* highlight layer on top that grows from the bottom */
-  background-image: linear-gradient(var(--tertiary), var(--tertiary));
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100% 0%;
-
-  transition: background-size 0.35s ease;
-  will-change: background-size;
+.page-title {
+  margin: 0;
+  text-align: center;
 }
 
-/* hover, highlight fills up */
-.page-title-link:hover .page-title-icon.is-masked { background-size: 100% 100%; }
-/* unhover, highlight drains down */
-.page-title-link:not(:hover) .page-title-icon.is-masked { background-size: 100% 0%; }
+.page-title-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* masked icon, color transitions only */
+.page-title-icon.is-masked {
+  display: inline-block;
+  width: 48px;   /* mobile default */
+  height: 48px;
+  background-color: var(--secondary); /* theme base */
+  -webkit-mask: var(--icon-url) no-repeat center / contain;
+  mask: var(--icon-url) no-repeat center / contain;
+  transition: background-color 0.2s ease;
+}
+
+/* hover color */
+.page-title-link:hover .page-title-icon.is-masked {
+  background-color: var(--tertiary);
+}
 
 /* responsive sizes */
-@media (min-width: 768px)  { .page-title-icon.is-masked { width: 100px; height: 100px; } }
-@media (min-width: 1200px) { .page-title-icon.is-masked { width: 160px; height: 160px; } }
-
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-title-icon.is-masked { width: 100px; height: 100px; }
+}
+@media (min-width: 1200px) {
+  .page-title-icon.is-masked { width: 160px; height: 160px; }
+}
 
 
 /* ===========================
