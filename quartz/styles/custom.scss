@@ -323,33 +323,17 @@ html[saved-theme="dark"] .floor-selector {
    Page title icon: fill up and drain down
    ============================================ */
 
-/* container centering */
-.page-title {
-  margin: 0;
-  text-align: center;
-}
-.page-title-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
+/* container */
+.page-title { margin: 0; text-align: center; }
+.page-title-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 
-/* reset legacy animation/background rules */
-.page-title-icon.is-masked,
-.page-title-icon.is-masked::before,
-.page-title-icon.is-masked::after {
-  animation: none !important;
-  transform: none !important;
-  background: none !important;
-}
-
-/* masked icon with layered backgrounds */
+/* masked icon, base color via background-color, highlight via top gradient */
 .page-title-icon.is-masked {
   display: inline-block;
   width: 48px;
   height: 48px;
 
+  /* mask longhands, driven by --icon-url from TSX */
   -webkit-mask-image: var(--icon-url);
   mask-image: var(--icon-url);
   -webkit-mask-repeat: no-repeat;
@@ -359,34 +343,28 @@ html[saved-theme="dark"] .floor-selector {
   -webkit-mask-size: contain;
   mask-size: contain;
 
-  /* two layers: highlight on top, base underneath */
-  background-image:
-    linear-gradient(var(--tertiary), var(--tertiary)),
-    linear-gradient(var(--secondary), var(--secondary));
-  background-repeat: no-repeat, no-repeat;
-  background-position: bottom, center;
-  background-size: 100% 0%, 100% 100%; /* top layer starts empty */
+  /* base color always present */
+  background-color: var(--secondary);
+
+  /* highlight layer on top that grows from the bottom */
+  background-image: linear-gradient(var(--tertiary), var(--tertiary));
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 0%;
+
   transition: background-size 0.35s ease;
   will-change: background-size;
 }
 
-/* hover: highlight fills up */
-.page-title-link:hover .page-title-icon.is-masked {
-  background-size: 100% 100%, 100% 100%;
-}
-
-/* unhover: highlight drains down */
-.page-title-link:not(:hover) .page-title-icon.is-masked {
-  background-size: 100% 0%, 100% 100%;
-}
+/* hover, highlight fills up */
+.page-title-link:hover .page-title-icon.is-masked { background-size: 100% 100%; }
+/* unhover, highlight drains down */
+.page-title-link:not(:hover) .page-title-icon.is-masked { background-size: 100% 0%; }
 
 /* responsive sizes */
-@media (min-width: 768px)  {
-  .page-title-icon.is-masked { width: 100px; height: 100px; }
-}
-@media (min-width: 1200px) {
-  .page-title-icon.is-masked { width: 160px; height: 160px; }
-}
+@media (min-width: 768px)  { .page-title-icon.is-masked { width: 100px; height: 100px; } }
+@media (min-width: 1200px) { .page-title-icon.is-masked { width: 160px; height: 160px; } }
+
 
 
 /* ===========================
