@@ -4,15 +4,17 @@ import { classNames } from "../util/lang"
 import { i18n } from "../i18n"
 
 const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzComponentProps) => {
-  const baseDir = pathToRoot(fileData.slug!)
   const title = cfg?.pageTitle ?? i18n(cfg.locale).propertyDefaults.title
+  const baseDir = pathToRoot(fileData.slug!)
+
+  // Build a stable project base, handles GitHub Pages subpath like /portfolio/
   const projectBase =
     (cfg.baseUrl ?? "/")
-      .replace(/^https?:\/\/[^/]+/i, "")
-      .replace(/\/?$/, "/")
+      .replace(/^https?:\/\/[^/]+/i, "")   // strip domain if present
+      .replace(/\/?$/, "/")                // ensure exactly one trailing slash
 
-  const asset = `${projectBase}static/fox_logo.svg?v=2`
-  const iconStyle = { ["--icon-url" as any]: `url(${asset})` }
+  // Correct, no stray dot, absolute to project base
+  const iconStyle = { ["--icon-url" as any]: `url(${projectBase}static/fox_logo.svg)` }
 
   return (
     <h2 class={classNames(displayClass, "page-title")}>
