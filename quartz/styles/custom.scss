@@ -319,9 +319,9 @@ html[saved-theme="dark"] .floor-selector {
 .page > .content .floor-selector,
 .article > .content .floor-selector { margin-inline: auto; }
 
-/* ============================================
-   Page title icon: centered, responsive, themed
-   ============================================ */
+/* ==========================================================
+   Page title icon: centered, responsive, hover color change
+   ========================================================== */
 
 .page-title {
   margin: 0;
@@ -332,36 +332,31 @@ html[saved-theme="dark"] .floor-selector {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
-/* masked icon */
+/* masked icon, color transitions only */
 .page-title-icon.is-masked {
   display: inline-block;
-  width: 60px;   /* default mobile */
-  height: 60px;
+  width: 48px;   /* mobile default */
+  height: 48px;
   background-color: var(--secondary); /* theme base */
   -webkit-mask: var(--icon-url) no-repeat center / contain;
   mask: var(--icon-url) no-repeat center / contain;
-  transition: background-color 0.25s ease;
+  transition: background-color 0.2s ease;
 }
 
-/* hover just changes color */
+/* hover color */
 .page-title-link:hover .page-title-icon.is-masked {
   background-color: var(--tertiary);
 }
 
 /* responsive sizes */
-@media (min-width: 768px) {
-  .page-title-icon.is-masked {
-    width: 100px;
-    height: 100px;
-  }
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-title-icon.is-masked { width: 100px; height: 100px; }
 }
 @media (min-width: 1200px) {
-  .page-title-icon.is-masked {
-    width: 160px;
-    height: 160px;
-  }
+  .page-title-icon.is-masked { width: 160px; height: 160px; }
 }
 
 
