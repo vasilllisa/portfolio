@@ -319,60 +319,50 @@ html[saved-theme="dark"] .floor-selector {
 .page > .content .floor-selector,
 .article > .content .floor-selector { margin-inline: auto; }
 
-/* ============================
-   Page title icon
-   ============================ */
+/* ============================================
+   Page title icon: centered, responsive, themed
+   ============================================ */
 
-/* container centering */
-.page-title { 
-  margin: 0; 
-  text-align: center; 
+.page-title {
+  margin: 0;
+  text-align: center;
 }
-.page-title-link { 
-  display: inline-flex; 
-  align-items: center; 
-  justify-content: center; 
-  text-decoration: none; 
+
+.page-title-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* masked icon */
 .page-title-icon.is-masked {
-  position: relative;
   display: inline-block;
-  width: 60px;
+  width: 60px;   /* default mobile */
   height: 60px;
-
+  background-color: var(--secondary); /* theme base */
   -webkit-mask: var(--icon-url) no-repeat center / contain;
   mask: var(--icon-url) no-repeat center / contain;
-  background: var(--secondary); /* base color always visible */
+  transition: background-color 0.25s ease;
 }
 
-/* hover overlay */
-.page-title-icon.is-masked::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--tertiary);
-  -webkit-mask: var(--icon-url) no-repeat center / contain;
-  mask: var(--icon-url) no-repeat center / contain;
-  transform-origin: bottom center;
-  transform: scaleY(0);
-  transition: transform 0.35s ease;
+/* hover just changes color */
+.page-title-link:hover .page-title-icon.is-masked {
+  background-color: var(--tertiary);
 }
 
-/* hover fill up */
-.page-title-link:hover .page-title-icon.is-masked::after {
-  transform: scaleY(1);
+/* responsive sizes */
+@media (min-width: 768px) {
+  .page-title-icon.is-masked {
+    width: 100px;
+    height: 100px;
+  }
 }
-
-/* unhover drain down */
-.page-title-link:not(:hover) .page-title-icon.is-masked::after {
-  transform: scaleY(0);
+@media (min-width: 1200px) {
+  .page-title-icon.is-masked {
+    width: 160px;
+    height: 160px;
+  }
 }
-
-/* responsive sizing */
-@media (min-width: 768px)  { .page-title-icon.is-masked { width: 140px; height: 140px; } }
-@media (min-width: 1200px) { .page-title-icon.is-masked { width: 160px; height: 160px; } }
 
 
 /* ===========================
