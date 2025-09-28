@@ -319,9 +319,9 @@ html[saved-theme="dark"] .floor-selector {
 .page > .content .floor-selector,
 .article > .content .floor-selector { margin-inline: auto; }
 
-/* ============================================
-   Page title icon: centered, responsive, themed
-   ============================================ */
+/* ============================
+   Page title icon
+   ============================ */
 
 /* container centering */
 .page-title { 
@@ -335,76 +335,44 @@ html[saved-theme="dark"] .floor-selector {
   text-decoration: none; 
 }
 
-/* masked icon, no hardcoded path */
+/* masked icon */
 .page-title-icon.is-masked {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 60px;
-  overflow: hidden;
 
   -webkit-mask: var(--icon-url) no-repeat center / contain;
   mask: var(--icon-url) no-repeat center / contain;
+  background: var(--secondary); /* base color always visible */
 }
 
-/* base and hover layers */
-.page-title-icon.is-masked::before,
+/* hover overlay */
 .page-title-icon.is-masked::after {
   content: "";
   position: absolute;
   inset: 0;
+  background: var(--tertiary);
   -webkit-mask: var(--icon-url) no-repeat center / contain;
   mask: var(--icon-url) no-repeat center / contain;
   transform-origin: bottom center;
-  will-change: transform;
+  transform: scaleY(0);
+  transition: transform 0.35s ease;
 }
 
-/* base fully filled by default */
-.page-title-icon.is-masked::before {
-  z-index: 1;
-  background-color: var(--secondary);
+/* hover fill up */
+.page-title-link:hover .page-title-icon.is-masked::after {
   transform: scaleY(1);
 }
 
-/* hover layer hidden by default */
-.page-title-icon.is-masked::after {
-  z-index: 2;
-  background-color: var(--tertiary);
+/* unhover drain down */
+.page-title-link:not(:hover) .page-title-icon.is-masked::after {
   transform: scaleY(0);
 }
 
-/* hover fills upward */
-.page-title-link:hover .page-title-icon.is-masked::after {
-  animation: icon-fill-up 0.35s ease-out forwards;
-}
-
-/* unhover refills upward */
-.page-title-link:not(:hover) .page-title-icon.is-masked::before {
-  animation: icon-fill-up 0.35s ease-out forwards;
-}
-
-/* keyframes for bottom-to-top fill */
-@keyframes icon-fill-up {
-  0%   { transform: scaleY(0); }
-  100% { transform: scaleY(1); }
-}
-
 /* responsive sizing */
-@media (min-width: 768px)  { 
-  .page-title-icon.is-masked { width: 140px; height: 140px; } 
-}
-@media (min-width: 1200px) { 
-  .page-title-icon.is-masked { width: 160px; height: 160px; } 
-}
-
-/* reduced motion fallback */
-@media (prefers-reduced-motion: reduce) {
-  .page-title-link:hover .page-title-icon.is-masked::after,
-  .page-title-link:not(:hover) .page-title-icon.is-masked::before {
-    animation: none;
-    transform: scaleY(1);
-  }
-}
+@media (min-width: 768px)  { .page-title-icon.is-masked { width: 140px; height: 140px; } }
+@media (min-width: 1200px) { .page-title-icon.is-masked { width: 160px; height: 160px; } }
 
 
 /* ===========================
