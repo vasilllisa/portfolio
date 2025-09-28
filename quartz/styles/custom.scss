@@ -323,11 +323,11 @@ html[saved-theme="dark"] .floor-selector {
    Page title icon: fill up and drain down
    ============================================ */
 
+/* container centering */
 .page-title {
   margin: 0;
   text-align: center;
 }
-
 .page-title-link {
   display: inline-flex;
   align-items: center;
@@ -335,40 +335,58 @@ html[saved-theme="dark"] .floor-selector {
   text-decoration: none;
 }
 
-/* masked icon */
+/* reset legacy animation/background rules */
+.page-title-icon.is-masked,
+.page-title-icon.is-masked::before,
+.page-title-icon.is-masked::after {
+  animation: none !important;
+  transform: none !important;
+  background: none !important;
+}
+
+/* masked icon with layered backgrounds */
 .page-title-icon.is-masked {
   display: inline-block;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
 
-  -webkit-mask: var(--icon-url) no-repeat center / contain;
-  mask: var(--icon-url) no-repeat center / contain;
+  -webkit-mask-image: var(--icon-url);
+  mask-image: var(--icon-url);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 
-  /* two background layers:
-     1. highlight (tertiary) that grows from bottom
-     2. base (secondary) always full */
-  background:
-    linear-gradient(to top, var(--tertiary) 100%) bottom / 100% 0% no-repeat,
-    var(--secondary);
+  /* two layers: highlight on top, base underneath */
+  background-image:
+    linear-gradient(var(--tertiary), var(--tertiary)),
+    linear-gradient(var(--secondary), var(--secondary));
   background-repeat: no-repeat, no-repeat;
   background-position: bottom, center;
+  background-size: 100% 0%, 100% 100%; /* top layer starts empty */
   transition: background-size 0.35s ease;
   will-change: background-size;
 }
 
 /* hover: highlight fills up */
 .page-title-link:hover .page-title-icon.is-masked {
-  background-size: 100% 100%, auto;
+  background-size: 100% 100%, 100% 100%;
 }
 
 /* unhover: highlight drains down */
 .page-title-link:not(:hover) .page-title-icon.is-masked {
-  background-size: 100% 0%, auto;
+  background-size: 100% 0%, 100% 100%;
 }
 
 /* responsive sizes */
-@media (min-width: 768px)  { .page-title-icon.is-masked { width: 100px; height: 100px; } }
-@media (min-width: 1200px) { .page-title-icon.is-masked { width: 160px; height: 160px; } }
+@media (min-width: 768px)  {
+  .page-title-icon.is-masked { width: 100px; height: 100px; }
+}
+@media (min-width: 1200px) {
+  .page-title-icon.is-masked { width: 160px; height: 160px; }
+}
 
 
 /* ===========================
