@@ -9,7 +9,7 @@ discipline: narrative-design
 tags:
   - narrative-design
 thumb: /static/content/thumbs/katanazero.png
-gif: /static/content/gifs/katanazero.gif
+gif: /static/content/gifs/katanazero.webp
 ---
 ---
 

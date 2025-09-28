@@ -3,13 +3,13 @@ title: "Cult of the Lamb Review: Power, Devotion, and Corruption"
 start: 2024-11-01
 end: 2024-11-30
 team: Solo
-description: Analysis of Cult of the Lamb, showing how cute aesthetics and grotesque mechanics fuse to examine power, devotion, and the corruption of leadership
+description: Analysis of Cult of the Lamb, showing how cute aesthetics and grotesque mechanics fuse to examine power, devotion, and the corruption of leadership.
 software:
 discipline: narrative-design
 tags:
   - narrative-design
-thumb: /static/content/thumbs/cotl_gnr.jpg
-gif: /static/content/gifs/cotl_gnr.webp
+thumb: /static/content/thumbs/cotl.png
+gif: /static/content/gifs/cotl.webp
 ---
 ---
 
