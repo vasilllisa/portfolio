@@ -259,7 +259,7 @@ export default ((opts?: Partial<TagContentOptions>) => {
                     {it.team && <div class="team">{it.team}</div>}
                     {it.summary && <p class="summary">{it.summary}</p>}
                     {it.tags?.length ? (
-                      <ul class="tags one-line" aria-label="Tags">
+                      <ul class="tags" aria-label="Tags">
                         
                         {it.tags.map((t) => ( 
                           <li> 
