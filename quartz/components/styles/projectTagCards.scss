@@ -99,17 +99,19 @@
 /* Description */
 .tag-projects .summary { margin: 0; opacity: .95; font-size: .95rem; }
 
-/* Tags, one line with horizontal scroll */
+/* Tags, wrap to as many rows as needed */
 .tag-projects .tags {
-  display: flex;                  // CHANGED: inline-flex -> flex
-  flex-wrap: nowrap;              // Prevent wrapping
-  white-space: nowrap;            // Prevent line breaks
-  overflow-x: auto;               // Allow horizontal scroll if needed
-  overflow-y: hidden;
+  display: flex;
+  flex-wrap: wrap;            /* allow wrapping */
+  align-content: flex-start;
+  gap: .35rem .4rem;          /* row and column gap */
+  white-space: normal;        /* allow breaks between items */
+  overflow: visible;          /* grow card instead of scrolling */
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 .tag-projects .tags.one-line {
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -120,18 +122,17 @@
 .tag-projects .tags li {
   flex: 0 0 auto;                 // Prevent shrinking/wrapping
 }
-.tag-projects .tags li a {
-  display: inline-block;
-  padding: .15rem .45rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  text-decoration: none;
-  font-size: .75rem;
-  opacity: .9;
-  white-space: nowrap;            // Prevent line breaks in tag names
-  hyphens: none;                  // Prevent breaking at hyphens
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
+
+.tag-projects .tags li a { 
+  display: inline-block; 
+  padding: .18rem .5rem;            /* compact pill */ 
+  font-size: .8rem;                 /* smaller type */ 
+  line-height: 1.1; 
+  border-radius: 9999px; 
+  background: color-mix(in oklab, var(--gray-8) 78%, transparent); 
+  border: 1px solid color-mix(in oklab, var(--gray-8) 86%, transparent); 
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, black 6%, transparent); 
+  white-space: nowrap;              /* keep individual tags intact */ 
 }
 
 /* Pin tag list to bottom of .meta */
