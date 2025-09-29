@@ -3,18 +3,24 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import { classNames } from "../util/lang"
 import { i18n } from "../i18n"
 
+// Keep logic identical to TagContent's resolveAssetUrl
+const resolveAssetUrl = (src: string, baseUrl: string): string => {
+  if (!src) return src
+  if (src.startsWith("/static/")) {
+    const base = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl
+    return `${base}${src}`
+  }
+  return src
+}
+
 const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzComponentProps) => {
   const title = cfg?.pageTitle ?? i18n(cfg.locale).propertyDefaults.title
   const baseDir = pathToRoot(fileData.slug!)
+  const baseUrl = cfg.baseUrl ?? ""
 
-  // Build a stable project base, handles GitHub Pages subpath like /portfolio/
-  const projectBase =
-    (cfg.baseUrl ?? "/")
-      .replace(/^https?:\/\/[^/]+/i, "")   // strip domain if present
-      .replace(/\/?$/, "/")                // ensure exactly one trailing slash
-
-  // Correct, no stray dot, absolute to project base
-  const iconStyle = { ["--icon-url" as any]: `url(${projectBase}static/fox_logo.svg)` }
+  // Use the same asset rule as TagContent so local dev and Pages behave the same
+  const iconUrl = resolveAssetUrl("/static/fox_logo.svg", baseUrl)
+  const iconStyle = { ["--icon-url" as any]: `url(${iconUrl})` }
 
   return (
     <h2 class={classNames(displayClass, "page-title")}>
