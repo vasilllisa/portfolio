@@ -1,5 +1,7 @@
 ---
 title: ✿ Home
+thumb: /static/content/thumbs/kittensleep.webp
+gif: /static/content/gifs/kittenwake.webp
 ---
 # Welcome
 ## about me
@@ -33,3 +35,26 @@ Feel free to roam around... ...or you can go into specifics by going to
  じしˍ,)ノ
 ```
 
+```
+  z                   
+   z                  
+  z   |\、             
+   z  / ,"\~~≃==≃≃ ╮ˎ   
+     < ,4 /  _    ⌒ 〵  
+      〞-~⸨_/、⸏ )⸎(ˎ⟆ | 
+              ˍˍ_ˍノ /  
+             ˍˍ_ˍ ⸏ ノ   
+                      
+```
+
+```
+  z                   
+   z                  
+  z   |\、             
+   ᶻ  / ,"\~~≃=⸊⸊⸊⸊⸊ ╮ˎ   
+     < ,4 /  ⸏        〵  
+      〞-~⸨_/、⸏ )⸎(ˎ/ | 
+              ˍˍ_ˍノ /  
+            ⸨ˍˍ_ˍ__ノ   
+                      
+```
