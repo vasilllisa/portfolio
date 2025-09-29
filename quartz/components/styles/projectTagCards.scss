@@ -139,3 +139,14 @@
 .tag-projects .tags {
   margin-top: auto;               // Push tags to bottom of .meta
 }
+
+
+/* Keep cards in normal flow below header, sidebar, and search UI */
+.tag-projects,
+.tag-projects .cards,
+.tag-projects .card,
+.tag-projects .card .meta {
+  position: relative !important;
+  z-index: auto !important;
+  transform: none !important;
+}

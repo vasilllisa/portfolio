@@ -1,13 +1,11 @@
 @use "./base.scss";
 
 /* ==========================================================
-   Project specific styles
-   Extends Quartz base styles. Code is unchanged, comments clarify intent.
+   Project-specific styles extending Quartz base
    ========================================================== */
 
 /* ----------------------------------------------------------
-   Project header block on project pages
-   Title, summary line, team line, description, and tag rows
+   Project header block: title, summary, team, description, tags
    ---------------------------------------------------------- */
 .content-meta--project {
   margin-bottom: 2.25rem;
@@ -16,34 +14,33 @@
     font-size: clamp(2.25rem, 4vw, 3rem);
     line-height: 1.1;
     letter-spacing: -0.01em;
-    margin: 0 0 0.5rem;
+    margin-bottom: 0.5rem;
     color: var(--dark);
   }
 
-  .project-line2 {
-    color: var(--darkgray);
-    font-size: 0.95rem;
-    margin: 0 0 1rem;
-  }
-
+  .project-line2,
   .project-team {
     color: var(--darkgray);
     margin: 0 0 1rem;
   }
 
+  .project-line2 {
+    font-size: 0.95rem;
+  }
+
   .project-desc {
     margin: 0 0 1.25rem;
-    max-width: 64ch; /* readable line length for description text */
+    max-width: 64ch;
   }
 
   .project-tags {
     display: grid;
-    gap: 0.6rem; /* vertical rhythm between tag groups */
+    gap: 0.6rem;
 
     &__software {
       display: flex;
       align-items: center;
-      gap: 0.6rem; /* space between label and tag row */
+      gap: 0.6rem;
 
       .label {
         color: var(--darkgray);
@@ -52,17 +49,16 @@
 
       .tag-row {
         display: flex;
-        flex-wrap: wrap;   /* allow tag chips to wrap to new lines */
+        flex-wrap: wrap;
         align-items: center;
-        gap: 0.4rem;       /* space between individual tag chips */
+        gap: 0.4rem;
       }
     }
   }
 }
 
 /* ----------------------------------------------------------
-   Tag chip used by ContentMeta
-   Pill shape, medium weight, subtle background
+   Tag chip for ContentMeta
    ---------------------------------------------------------- */
 .qz-tag {
   display: inline-flex;
@@ -71,7 +67,7 @@
   line-height: 1;
   padding: 0.32rem 0.6rem;
   border: 1px solid var(--lightgray);
-  border-radius: 999px; /* full pill */
+  border-radius: 999px;
   background: color-mix(in srgb, var(--lightgray) 25%, var(--light));
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -84,27 +80,85 @@
 }
 
 /* ----------------------------------------------------------
-   Remove default Quartz tag list when custom header is present
-   Also hide tags inside popovers for a cleaner preview
+   Hide default Quartz tag lists when custom header is present
    ---------------------------------------------------------- */
-article:has(.content-meta--project) ul.tags { display: none !important; }
-.content-meta--project ~ ul.tags { display: none !important; }
-.popover .popover-inner ul.tags { display: none !important; }
-.popover .section > .tags { display: none !important; }
+article:has(.content-meta--project) ul.tags { 
+  display: none !important; 
+}
 
+.content-meta--project ~ ul.tags { 
+  display: none !important; 
+}
+
+.popover .popover-inner ul.tags,
+.popover .section > .tags { 
+  display: none !important; 
+}
+
+/* ==========================================================
+   Page title with icon, animated highlight fill
+   ========================================================== */
+.page-title {
+  margin: 0;
+  text-align: center;
+}
+
+.page-title-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Masked icon, base color plus animated highlight layer filling upward */
+.page-title-icon.is-masked {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+
+  /* Layer 1, highlight, starts at 0% height, grows to 100% on hover.
+     Layer 2, base, full size. */
+  background:
+    linear-gradient(var(--tertiary), var(--tertiary)) bottom / 100% 0 no-repeat,
+    linear-gradient(var(--secondary), var(--secondary)) bottom / 100% 100% no-repeat;
+
+  -webkit-mask: var(--icon-url) no-repeat center / contain;
+  mask: var(--icon-url) no-repeat center / contain;
+
+  transition: background-size 0.35s ease;
+}
+
+.page-title-link:hover .page-title-icon.is-masked {
+  background-size: 100% 100%, 100% 100%;
+}
+
+/* Responsive icon sizes */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-title-icon.is-masked { width: 100px; height: 100px; }
+}
+@media (min-width: 1200px) {
+  .page-title-icon.is-masked { width: 160px; height: 160px; }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .page-title-icon.is-masked {
+    transition: none;
+    background:
+      linear-gradient(var(--tertiary), var(--tertiary)) bottom / 100% 100% no-repeat,
+      linear-gradient(var(--secondary), var(--secondary)) bottom / 100% 100% no-repeat;
+  }
+}
 
 /* ==========================================================
    CS2 collage component, pure CSS, Quartz v4
    Floor selector with sticky buttons and responsive image grid
    ========================================================== */
 
-/* ----------------------------------------------------------
-   Component wrapper, width and design tokens
-   Tokens support theme overrides below
-   ---------------------------------------------------------- */
+/* Wrapper and tokens */
 .floor-selector {
   --fs-max: 1200px;
-  width: clamp(320px, 80%, var(--fs-max));   /* 80 percent width, capped at max */
+  width: clamp(320px, 80%, var(--fs-max));
   margin-inline: auto;
 
   --fs-fg: var(--text, var(--fg, #111));
@@ -113,19 +167,17 @@ article:has(.content-meta--project) ul.tags { display: none !important; }
 
   /* light defaults */
   --fs-bar-bg: rgba(248, 248, 248, 0.92);
-  --fs-btn-color: #111;                 /* active button text */
-  --fs-btn-dim: rgba(17, 17, 17, 0.72); /* inactive button text */
+  --fs-btn-color: #111;
+  --fs-btn-dim: rgba(17, 17, 17, 0.72);
   --fs-active-bg: rgba(0, 0, 0, 0.16);
   --fs-hover-bg: rgba(0, 0, 0, 0.08);
-  --fs-caption: rgba(0, 0, 0, 0.58);    /* figure caption color */
+  --fs-caption: rgba(0, 0, 0, 0.58);
 
-  --fs-stick-top: max(12px, env(safe-area-inset-top)); /* safe sticky offset */
+  /* sticky offset with safe area */
+  --fs-stick-top: max(12px, env(safe-area-inset-top));
 }
 
-/* ----------------------------------------------------------
-   Dark scheme defaults based on system preference
-   Site theme toggles below can override these
-   ---------------------------------------------------------- */
+/* Dark defaults, overridable by site theme */
 @media (prefers-color-scheme: dark) {
   .floor-selector {
     --fs-bar-bg: rgba(16, 16, 20, 0.92);
@@ -137,10 +189,7 @@ article:has(.content-meta--project) ul.tags { display: none !important; }
   }
 }
 
-/* ----------------------------------------------------------
-   Explicit site theme overrides
-   These rules take priority over system preference
-   ---------------------------------------------------------- */
+/* Explicit site theme overrides */
 :where(html, body)[data-theme="light"] .floor-selector,
 :where(html, body).light .floor-selector,
 :where(html, body).theme-light .floor-selector,
@@ -165,16 +214,10 @@ html[saved-theme="dark"] .floor-selector {
   --fs-caption: rgba(255, 255, 255, 0.78);
 }
 
-/* ----------------------------------------------------------
-   Hide the radio inputs, they still control state
-   Prevents layout jump while enabling pure CSS toggling
-   ---------------------------------------------------------- */
+/* Radios hidden, retain state control */
 .floor-selector > input[type="radio"] { display: none; }
 
-/* ----------------------------------------------------------
-   Sticky button bar
-   High contrast buttons, blurred backdrop, no borders
-   ---------------------------------------------------------- */
+/* Sticky button bar */
 .floor-selector .selector-buttons {
   position: sticky;
   top: var(--fs-stick-top);
@@ -189,12 +232,11 @@ html[saved-theme="dark"] .floor-selector {
   -webkit-backdrop-filter: saturate(1.1) blur(8px);
   backdrop-filter: saturate(1.1) blur(8px);
   border: 0;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
   border-radius: var(--fs-radius);
 }
 
-/* Button states
-   Dim by default, brighten on hover, press sinks 1px */
+/* Buttons, hover and press */
 .floor-selector .floor-btn {
   padding: 0.65rem 0.9rem;
   border: 0;
@@ -210,20 +252,16 @@ html[saved-theme="dark"] .floor-selector {
 .floor-selector .floor-btn:hover { background: var(--fs-hover-bg); color: var(--fs-btn-color); }
 .floor-selector .floor-btn:active { transform: translateY(1px); }
 
-/* Selected state driven by checked radios */
+/* Checked radio drives selected label */
 #overview-floor:checked ~ .selector-buttons label[for="overview-floor"],
-#garage-floor:checked   ~ .selector-buttons label[for="garage-floor"],
-#first-floor:checked    ~ .selector-buttons label[for="first-floor"],
-#second-floor:checked   ~ .selector-buttons label[for="second-floor"] {
+#garage-floor:checked ~ .selector-buttons label[for="garage-floor"],
+#first-floor:checked ~ .selector-buttons label[for="first-floor"],
+#second-floor:checked ~ .selector-buttons label[for="second-floor"] {
   background: var(--fs-active-bg);
   color: var(--fs-btn-color);
 }
 
-/* ----------------------------------------------------------
-   Two column grid
-   Iso spans both columns, tactical aligns with top and side
-   Row gaps tuned so top and side sit closer together
-   ---------------------------------------------------------- */
+/* Image grid, iso spans two cols, tactical aligns, tighter top-side row gap */
 .floor-selector .image-grid {
   display: grid;
   grid-template-areas:
@@ -231,13 +269,10 @@ html[saved-theme="dark"] .floor-selector {
     "top tactical"
     "side tactical";
   grid-template-columns: 1fr 1fr;
-  column-gap: var(--fs-gap);               /* space between columns */
-  row-gap: calc(var(--fs-gap) * 0.22);     /* smaller vertical gap between top and side */
-  align-items: stretch;                     /* align tactical bottom with others */
+  gap: calc(var(--fs-gap) * 0.22) var(--fs-gap);
 }
 
-/* Figure panels
-   Two rows, image fills available space, caption sits below */
+/* Figure panel, image fills, caption below */
 .floor-selector .panel {
   margin: 0;
   display: grid;
@@ -245,8 +280,7 @@ html[saved-theme="dark"] .floor-selector {
   min-height: 0;
 }
 
-/* Images scale to fit without cropping
-   Hidden by default, shown per selected floor */
+/* Images hidden by default, shown per floor */
 .floor-selector .panel img {
   display: none;
   width: 100%;
@@ -255,39 +289,30 @@ html[saved-theme="dark"] .floor-selector {
   border-radius: var(--fs-radius);
 }
 
-/* Captions
-   Centered, compact size, theme colored */
+/* Captions, centered, compact */
 .floor-selector .panel figcaption {
-  margin: 0.4rem 0 0 0;
+  margin-top: 0.4rem;
   text-align: center;
   font-size: clamp(12px, 1.2vw, 14px);
   color: var(--fs-caption);
 }
 
-/* Grid area mapping and vertical alignment */
+/* Grid areas and vertical alignment */
 .floor-selector .panel--iso      { grid-area: iso; }
 .floor-selector .panel--topdown  { grid-area: top;  align-self: start; }
-.floor-selector .panel--side     { grid-area: side; align-self: end;   }
+.floor-selector .panel--side     { grid-area: side; align-self: end; }
 .floor-selector .panel--tactical { grid-area: tactical; align-self: stretch; }
 
-/* Reveal rules
-   Switch the matching image set based on the checked floor */
+/* Reveal matching image set by checked floor */
 #overview-floor:checked ~ .image-grid img.overview { display: block; }
 #garage-floor:checked   ~ .image-grid img.garage   { display: block; }
 #first-floor:checked    ~ .image-grid img.first    { display: block; }
 #second-floor:checked   ~ .image-grid img.second   { display: block; }
 
-/* ----------------------------------------------------------
-   Mobile layout at 900px and below
-   Buttons switch to 2 columns
-   Image grid collapses to a single column stack
-   ---------------------------------------------------------- */
+/* Mobile 900px, buttons to 2 cols, grid to single column */
 @media (max-width: 900px) {
   .floor-selector { width: 100%; }
-  .floor-selector .selector-buttons {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.4rem;
-  }
+  .floor-selector .selector-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .floor-selector .image-grid {
     grid-template-areas:
       "iso"
@@ -298,74 +323,15 @@ html[saved-theme="dark"] .floor-selector {
   }
 }
 
-/* Duplicate mobile block retained as written
-   Functionally redundant, harmless, kept for parity with source */
-@media (max-width: 900px) {
-  .floor-selector .selector-buttons {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.4rem;
-  }
-  .floor-selector .image-grid {
-    grid-template-areas:
-      "iso"
-      "tactical"
-      "top"
-      "side";
-    grid-template-columns: 1fr;
-  }
-}
+/* Drop duplicate 900px block, behavior already defined */
 
-/* Center component within Quartz content column on pages and articles */
+/* Center inside Quartz content column */
 .page > .content .floor-selector,
 .article > .content .floor-selector { margin-inline: auto; }
 
-/* ==========================================================
-   Page title icon: centered, responsive, hover color change
-   ========================================================== */
-
-.page-title {
-  margin: 0;
-  text-align: center;
-}
-
-.page-title-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-
-/* masked icon, color transitions only */
-.page-title-icon.is-masked {
-  display: inline-block;
-  width: 48px;   /* mobile default */
-  height: 48px;
-  background-color: var(--secondary); /* theme base */
-  -webkit-mask: var(--icon-url) no-repeat center / contain;
-  mask: var(--icon-url) no-repeat center / contain;
-  transition: background-color 0.2s ease;
-}
-
-/* hover color */
-.page-title-link:hover .page-title-icon.is-masked {
-  background-color: var(--tertiary);
-}
-
-/* responsive sizes */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .page-title-icon.is-masked { width: 100px; height: 100px; }
-}
-@media (min-width: 1200px) {
-  .page-title-icon.is-masked { width: 160px; height: 160px; }
-}
-
-
-/* ===========================
-   Mobile hardening fixes
-   Stack header correctly, remove conflicting stickies, prevent overflow
-   =========================== */
+/* Mobile hardening, 768px */
 @media (max-width: 768px) {
-  /* Ensure the Quartz header or top bar sits above any custom sticky UI */
+  /* Keep site header above custom stickies */
   header, .top, .navbar, .qz-header {
     position: sticky;
     top: 0;
@@ -373,17 +339,16 @@ html[saved-theme="dark"] .floor-selector {
     background: var(--light);
   }
 
-  /* Disable sticky behavior of the project floor selector on phones */
+  /* Disable selector sticky on phones 
   .floor-selector .selector-buttons {
     position: static;
     top: auto;
     z-index: auto;
     backdrop-filter: none;
-  }
+  }*/
 
-  /* Force single column grid for any custom image grid, avoid named-area collisions */
+  /* Force single column grid */
   .floor-selector .image-grid {
-    display: grid;
     grid-template-columns: 1fr;
     grid-auto-flow: row;
     grid-template-areas:
@@ -394,7 +359,7 @@ html[saved-theme="dark"] .floor-selector {
     gap: 0.5rem;
   }
 
-  /* Sidebar and asides must not be sticky or fixed on phones */
+  /* Sidebars not sticky on phones */
   aside, .sidebar, .left-sidebar, .right-sidebar {
     position: static;
     top: auto;
@@ -402,7 +367,7 @@ html[saved-theme="dark"] .floor-selector {
     z-index: auto;
   }
 
-  /* Prevent text and code blocks from forcing overflow in flex and grid containers */
+  /* Prevent overflow from text and code blocks */
   .content, .content * {
     min-width: 0;
     max-width: 100%;
@@ -410,23 +375,18 @@ html[saved-theme="dark"] .floor-selector {
     overflow-wrap: anywhere;
   }
 
-  /* Images and videos scale to container, no overflow into sidebar */
+  /* Media scales to container */
   img, video, canvas {
     max-width: 100%;
     height: auto;
   }
 
-  /* Compact tag and meta rows to avoid wrapping collisions */
+  /* Compact meta and tag rows */
   .content-meta--project .meta-line,
   .content-meta--project .tag-row,
   .qz-tag {
     flex-wrap: wrap;
     row-gap: 0.25rem;
   }
-}
-
-/* Reduce custom sticky z-index globally so it never eclipses site chrome */
-.floor-selector .selector-buttons {
-  z-index: 2;
 }
 
