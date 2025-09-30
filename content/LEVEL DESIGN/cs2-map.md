@@ -23,6 +23,66 @@ gif: /static/content/gifs/cs2.webp
 Playable on [Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=3352269283).
 
 ---
+
+Isometric, top-down, and side views to show how the three floors connect. Diagrams highlight rotations, chokepoints, and overall flow for quick readability.
+
+<div class="floor-selector">
+
+<input type="radio" name="floor" id="overview-floor" checked>
+<input type="radio" name="floor" id="garage-floor">
+<input type="radio" name="floor" id="first-floor">
+<input type="radio" name="floor" id="second-floor">
+
+<div class="selector-buttons">
+  <label class="floor-btn" for="overview-floor">Overview</label>
+  <label class="floor-btn" for="garage-floor">Garage</label>
+  <label class="floor-btn" for="first-floor">First Floor</label>
+  <label class="floor-btn" for="second-floor">Second Floor</label>
+</div>
+
+<div class="image-grid">
+
+  <!-- Big isometric, full width row -->
+  <figure class="panel panel--iso">
+    <img class="overview" src="overview-isometric.png" alt="Overview isometric">
+    <img class="garage"   src="garage-isometric.png" alt="Garage isometric">
+    <img class="first"    src="firstfloor-isometric.png" alt="First floor isometric">
+    <img class="second"   src="secondfloor-isometric.png" alt="Second floor isometric">
+    <figcaption>Isometric View</figcaption>
+  </figure>
+
+  <!-- Bottom row, left column top: top-down -->
+  <figure class="panel panel--topdown">
+    <img class="overview" src="overview-topdown.png" alt="Overview top down">
+    <img class="garage"   src="garage-topdown.png" alt="Garage top down">
+    <img class="first"    src="firstfloor-topdown.png" alt="First floor top down">
+    <img class="second"   src="secondfloor-topdown.png" alt="Second floor top down">
+    <figcaption>Top Down View</figcaption>
+  </figure>
+
+  <!-- Bottom row, left column bottom: side -->
+  <figure class="panel panel--side">
+    <img class="overview" src="overview-sideview.png" alt="Overview side section">
+    <img class="garage"   src="garage-sideview.png" alt="Garage side section">
+    <img class="first"    src="firstfloor-sideview.png" alt="First floor side section">
+    <img class="second"   src="secondfloor-sideview.png" alt="Second floor side section">
+    <figcaption>Side View</figcaption>
+  </figure>
+
+  <!-- Bottom row, right column: tactical -->
+  <figure class="panel panel--tactical">
+    <img class="overview" src="overview-tactical.png" alt="Overview tactical flow">
+    <img class="garage"   src="garage-tactical.png" alt="Garage tactical flow">
+    <img class="first"    src="firstfloor-tactical.png" alt="First floor tactical flow">
+    <img class="second"   src="secondfloor-tactical.png" alt="Second floor tactical flow">
+    <figcaption>Tactical Map Flow</figcaption>
+  </figure>
+
+</div>
+</div>
+
+
+---
 ## **Design Goals**
 
 #### Contested Sightlines
@@ -86,75 +146,9 @@ To make the museum feel like a believable space, I gathered references from real
 </figure>
 
 ---
-## **Constructing the Framework**
-
-I created isometric, top-down, and side views to show how the three floors connect. Diagrams highlight rotations, chokepoints, and overall flow for quick readability.
-
-<div class="floor-selector">
-
-<input type="radio" name="floor" id="overview-floor" checked>
-<input type="radio" name="floor" id="garage-floor">
-<input type="radio" name="floor" id="first-floor">
-<input type="radio" name="floor" id="second-floor">
-
-<div class="selector-buttons">
-  <label class="floor-btn" for="overview-floor">Overview</label>
-  <label class="floor-btn" for="garage-floor">Garage</label>
-  <label class="floor-btn" for="first-floor">First Floor</label>
-  <label class="floor-btn" for="second-floor">Second Floor</label>
-</div>
-
-<div class="image-grid">
-
-  <!-- Big isometric, full width row -->
-  <figure class="panel panel--iso">
-    <img class="overview" src="overview-isometric.png" alt="Overview isometric">
-    <img class="garage"   src="garage-isometric.png" alt="Garage isometric">
-    <img class="first"    src="firstfloor-isometric.png" alt="First floor isometric">
-    <img class="second"   src="secondfloor-isometric.png" alt="Second floor isometric">
-    <figcaption>Isometric View</figcaption>
-  </figure>
-
-  <!-- Bottom row, left column top: top-down -->
-  <figure class="panel panel--topdown">
-    <img class="overview" src="overview-topdown.png" alt="Overview top down">
-    <img class="garage"   src="garage-topdown.png" alt="Garage top down">
-    <img class="first"    src="firstfloor-topdown.png" alt="First floor top down">
-    <img class="second"   src="secondfloor-topdown.png" alt="Second floor top down">
-    <figcaption>Top Down View</figcaption>
-  </figure>
-
-  <!-- Bottom row, left column bottom: side -->
-  <figure class="panel panel--side">
-    <img class="overview" src="overview-sideview.png" alt="Overview side section">
-    <img class="garage"   src="garage-sideview.png" alt="Garage side section">
-    <img class="first"    src="firstfloor-sideview.png" alt="First floor side section">
-    <img class="second"   src="secondfloor-sideview.png" alt="Second floor side section">
-    <figcaption>Side View</figcaption>
-  </figure>
-
-  <!-- Bottom row, right column: tactical -->
-  <figure class="panel panel--tactical">
-    <img class="overview" src="overview-tactical.png" alt="Overview tactical flow">
-    <img class="garage"   src="garage-tactical.png" alt="Garage tactical flow">
-    <img class="first"    src="firstfloor-tactical.png" alt="First floor tactical flow">
-    <img class="second"   src="secondfloor-tactical.png" alt="Second floor tactical flow">
-    <figcaption>Tactical Map Flow</figcaption>
-  </figure>
-
-</div>
-</div>
-
-
-
-
-
-
-
----
 ## T & CT Pathing Breakdown
 
-These sections show how I shaped main and side routes for both teams. Each path was built around pacing, sightline control, and rotation balance,
+These sections show how I shaped main and side routes for both teams. Each path was built around pacing, sightline control, and rotation balance.
 
 ### T Main Paths
 

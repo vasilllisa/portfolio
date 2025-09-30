@@ -157,36 +157,36 @@ article:has(.content-meta--project) ul.tags {
 
 /* Wrapper and tokens */
 .floor-selector {
-  --fs-max: 1200px;
-  width: clamp(320px, 80%, var(--fs-max));
-  margin-inline: auto;
+--fs-max: 1200px;
+width: clamp(320px, 80%, var(--fs-max));
+margin-inline: auto;
 
-  --fs-fg: var(--text, var(--fg, #111));
-  --fs-radius: 12px;
-  --fs-gap: 1.25rem;
+--fs-fg: var(--text, var(--fg, #111));
+--fs-radius: 12px;
+--fs-gap: 1.25rem;
 
-  /* light defaults */
-  --fs-bar-bg: rgba(248, 248, 248, 0.92);
-  --fs-btn-color: #111;
-  --fs-btn-dim: rgba(17, 17, 17, 0.72);
-  --fs-active-bg: rgba(0, 0, 0, 0.16);
-  --fs-hover-bg: rgba(0, 0, 0, 0.08);
-  --fs-caption: rgba(0, 0, 0, 0.58);
+/* light defaults */
+--fs-bar-bg: rgba(248, 248, 248, 0.92);
+--fs-btn-color: #111;
+--fs-btn-dim: rgba(17, 17, 17, 0.72);
+--fs-active-bg: rgba(0, 0, 0, 0.16);
+--fs-hover-bg: rgba(0, 0, 0, 0.08);
+--fs-caption: rgba(0, 0, 0, 0.58);
 
-  /* sticky offset with safe area */
-  --fs-stick-top: max(12px, env(safe-area-inset-top));
+/* sticky offset with safe area */
+--fs-stick-top: max(12px, env(safe-area-inset-top));
 }
 
 /* Dark defaults, overridable by site theme */
 @media (prefers-color-scheme: dark) {
-  .floor-selector {
-    --fs-bar-bg: rgba(16, 16, 20, 0.92);
-    --fs-btn-color: #fafafa;
-    --fs-btn-dim: rgba(250, 250, 250, 0.74);
-    --fs-active-bg: rgba(255, 255, 255, 0.22);
-    --fs-hover-bg: rgba(255, 255, 255, 0.12);
-    --fs-caption: rgba(255, 255, 255, 0.78);
-  }
+.floor-selector {
+--fs-bar-bg: rgba(16, 16, 20, 0.92);
+--fs-btn-color: #fafafa;
+--fs-btn-dim: rgba(250, 250, 250, 0.74);
+--fs-active-bg: rgba(255, 255, 255, 0.22);
+--fs-hover-bg: rgba(255, 255, 255, 0.12);
+--fs-caption: rgba(255, 255, 255, 0.78);
+}
 }
 
 /* Explicit site theme overrides */
@@ -194,60 +194,55 @@ article:has(.content-meta--project) ul.tags {
 :where(html, body).light .floor-selector,
 :where(html, body).theme-light .floor-selector,
 html[saved-theme="light"] .floor-selector {
-  --fs-bar-bg: rgba(248, 248, 248, 0.92);
-  --fs-btn-color: #111;
-  --fs-btn-dim: rgba(17, 17, 17, 0.72);
-  --fs-active-bg: rgba(0, 0, 0, 0.16);
-  --fs-hover-bg: rgba(0, 0, 0, 0.08);
-  --fs-caption: rgba(0, 0, 0, 0.58);
+--fs-bar-bg: rgba(248, 248, 248, 0.92);
+--fs-btn-color: #111;
+--fs-btn-dim: rgba(17, 17, 17, 0.72);
+--fs-active-bg: rgba(0, 0, 0, 0.16);
+--fs-hover-bg: rgba(0, 0, 0, 0.08);
+--fs-caption: rgba(0, 0, 0, 0.58);
 }
 
 :where(html, body)[data-theme="dark"] .floor-selector,
 :where(html, body).dark .floor-selector,
 :where(html, body).theme-dark .floor-selector,
 html[saved-theme="dark"] .floor-selector {
-  --fs-bar-bg: rgba(16, 16, 20, 0.92);
-  --fs-btn-color: #fafafa;
-  --fs-btn-dim: rgba(250, 250, 250, 0.74);
-  --fs-active-bg: rgba(255, 255, 255, 0.22);
-  --fs-hover-bg: rgba(255, 255, 255, 0.12);
-  --fs-caption: rgba(255, 255, 255, 0.78);
+--fs-bar-bg: rgba(16, 16, 20, 0.92);
+--fs-btn-color: #fafafa;
+--fs-btn-dim: rgba(250, 250, 250, 0.74);
+--fs-active-bg: rgba(255, 255, 255, 0.22);
+--fs-hover-bg: rgba(255, 255, 255, 0.12);
+--fs-caption: rgba(255, 255, 255, 0.78);
 }
 
 /* Radios hidden, retain state control */
 .floor-selector > input[type="radio"] { display: none; }
 
-/* Sticky button bar */
+/* Sticky button bar, sits above images, below global overlays */
 .floor-selector .selector-buttons {
-  position: sticky;
-  top: var(--fs-stick-top);
-  z-index: 5;
-  width: 100%;
-  margin: 0 0 0.01rem 0;
-  padding: 0.55rem;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.4rem;
-  background: var(--fs-bar-bg);
-  -webkit-backdrop-filter: saturate(1.1) blur(8px);
-  backdrop-filter: saturate(1.1) blur(8px);
-  border: 0;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-  border-radius: var(--fs-radius);
+position: sticky;
+top: var(--fs-stick-top);
+z-index: var(--z-sticky);
+width: 100%;
+margin: 0 0 0.01rem 0;
+padding: 0.55rem;
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 0.4rem;
+background: var(--fs-bar-bg);
 }
 
 /* Buttons, hover and press */
 .floor-selector .floor-btn {
-  padding: 0.65rem 0.9rem;
-  border: 0;
-  border-radius: 10px;
-  background: transparent;
-  color: var(--fs-btn-dim);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  transition: background 140ms ease, color 140ms ease, transform 80ms ease;
+padding: 0.65rem 0.9rem;
+border: 0;
+border-radius: 10px;
+background: transparent;
+color: var(--fs-btn-dim);
+font-weight: 700;
+line-height: 1;
+letter-spacing: 0.01em;
+cursor: pointer;
+transition: background 140ms ease, color 140ms ease, transform 80ms ease;
 }
 .floor-selector .floor-btn:hover { background: var(--fs-hover-bg); color: var(--fs-btn-color); }
 .floor-selector .floor-btn:active { transform: translateY(1px); }
@@ -257,136 +252,144 @@ html[saved-theme="dark"] .floor-selector {
 #garage-floor:checked ~ .selector-buttons label[for="garage-floor"],
 #first-floor:checked ~ .selector-buttons label[for="first-floor"],
 #second-floor:checked ~ .selector-buttons label[for="second-floor"] {
-  background: var(--fs-active-bg);
-  color: var(--fs-btn-color);
+background: var(--fs-active-bg);
+color: var(--fs-btn-color);
 }
 
 /* Image grid, iso spans two cols, tactical aligns, tighter top-side row gap */
 .floor-selector .image-grid {
-  display: grid;
-  grid-template-areas:
-    "iso iso"
-    "top tactical"
-    "side tactical";
-  grid-template-columns: 1fr 1fr;
-  gap: calc(var(--fs-gap) * 0.22) var(--fs-gap);
+display: grid;
+grid-template-areas:
+"iso iso"
+"top tactical"
+"side tactical";
+grid-template-columns: 1fr 1fr;
+gap: calc(var(--fs-gap) * 0.22) var(--fs-gap);
 }
 
 /* Figure panel, image fills, caption below */
 .floor-selector .panel {
-  margin: 0;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  min-height: 0;
+margin: 0;
+display: grid;
+grid-template-rows: 1fr auto;
+min-height: 0;
 }
 
-/* Images hidden by default, shown per floor */
+/* Images hidden by default, shown per floor, layered under sticky bar */
 .floor-selector .panel img {
-  display: none;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: var(--fs-radius);
+display: none;
+width: 100%;
+height: 100%;
+object-fit: contain;
+border-radius: var(--fs-radius);
+position: relative;
+z-index: var(--z-images);
 }
 
 /* Captions, centered, compact */
 .floor-selector .panel figcaption {
-  margin-top: 0.4rem;
-  text-align: center;
-  font-size: clamp(12px, 1.2vw, 14px);
-  color: var(--fs-caption);
+margin-top: 0.4rem;
+text-align: center;
+font-size: clamp(12px, 1.2vw, 14px);
+color: var(--fs-caption);
 }
 
 /* Grid areas and vertical alignment */
-.floor-selector .panel--iso      { grid-area: iso; }
-.floor-selector .panel--topdown  { grid-area: top;  align-self: start; }
-.floor-selector .panel--side     { grid-area: side; align-self: end; }
+.floor-selector .panel--iso { grid-area: iso; }
+.floor-selector .panel--topdown { grid-area: top; align-self: start; }
+.floor-selector .panel--side { grid-area: side; align-self: end; }
 .floor-selector .panel--tactical { grid-area: tactical; align-self: stretch; }
 
 /* Reveal matching image set by checked floor */
 #overview-floor:checked ~ .image-grid img.overview { display: block; }
-#garage-floor:checked   ~ .image-grid img.garage   { display: block; }
-#first-floor:checked    ~ .image-grid img.first    { display: block; }
-#second-floor:checked   ~ .image-grid img.second   { display: block; }
+#garage-floor:checked ~ .image-grid img.garage { display: block; }
+#first-floor:checked ~ .image-grid img.first { display: block; }
+#second-floor:checked ~ .image-grid img.second { display: block; }
 
 /* Mobile 900px, buttons to 2 cols, grid to single column */
 @media (max-width: 900px) {
-  .floor-selector { width: 100%; }
-  .floor-selector .selector-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .floor-selector .image-grid {
-    grid-template-areas:
-      "iso"
-      "tactical"
-      "top"
-      "side";
-    grid-template-columns: 1fr;
-  }
+.floor-selector { width: 100%; }
+.floor-selector .selector-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.floor-selector .image-grid {
+grid-template-areas:
+"iso"
+"tactical"
+"top"
+"side";
+grid-template-columns: 1fr;
+}
 }
 
-/* Drop duplicate 900px block, behavior already defined */
-
-/* Center inside Quartz content column */
-.page > .content .floor-selector,
-.article > .content .floor-selector { margin-inline: auto; }
-
-/* Mobile hardening, 768px */
+/* Mobile hardening, 768px /
 @media (max-width: 768px) {
-  /* Keep site header above custom stickies */
-  header, .top, .navbar, .qz-header {
-    position: sticky;
-    top: 0;
-    z-index: 40;
-    background: var(--light);
-  }
-
-  /* Disable selector sticky on phones 
-  .floor-selector .selector-buttons {
-    position: static;
-    top: auto;
-    z-index: auto;
-    backdrop-filter: none;
-  }*/
-
-  /* Force single column grid */
-  .floor-selector .image-grid {
-    grid-template-columns: 1fr;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "iso"
-      "tactical"
-      "top"
-      "side";
-    gap: 0.5rem;
-  }
-
-  /* Sidebars not sticky on phones */
-  aside, .sidebar, .left-sidebar, .right-sidebar {
-    position: static;
-    top: auto;
-    height: auto;
-    z-index: auto;
-  }
-
-  /* Prevent overflow from text and code blocks */
-  .content, .content * {
-    min-width: 0;
-    max-width: 100%;
-    word-break: break-word;
-    overflow-wrap: anywhere;
-  }
-
-  /* Media scales to container */
-  img, video, canvas {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Compact meta and tag rows */
-  .content-meta--project .meta-line,
-  .content-meta--project .tag-row,
-  .qz-tag {
-    flex-wrap: wrap;
-    row-gap: 0.25rem;
-  }
+/ Keep site header above custom stickies */
+header, .top, .navbar, .qz-header {
+position: sticky;
+top: 0;
+z-index: auto;
+background: var(--light);
 }
 
+
+
+/* Sidebars not sticky on phones */
+aside, .sidebar, .left-sidebar, .right-sidebar {
+position: static;
+top: auto;
+height: auto;
+z-index: auto;
+}
+
+/* Prevent overflow from text and code blocks */
+.content, .content * {
+min-width: 0;
+max-width: 100%;
+word-break: break-word;
+overflow-wrap: anywhere;
+}
+
+/* Media scales to container */
+img, video, canvas {
+max-width: 100%;
+height: auto;
+}
+
+/* Compact meta and tag rows */
+.content-meta--project .meta-line,
+.content-meta--project .tag-row,
+.qz-tag {
+flex-wrap: wrap;
+row-gap: 0.25rem;
+}
+
+/* Adjust sticky offset on phones */
+@media (max-width: 900px) {
+.floor-selector .selector-buttons {
+top: calc(var(--fs-stick-top) + 75px);
+}}
+
+:root {
+--z-overlay: 1000;
+--z-sticky: 50;
+--z-images: 10;
+}
+
+/* Collage owns its internal stacking context so its children layer predictably */
+.floor-selector { isolation: isolate; }
+
+/* Global overlays stay on top of everything */
+.site-search,
+.global-overlay,
+.modal.is-open,
+.nav-open .nav-overlay {
+position: fixed;
+inset: 0;
+z-index: var(--z-overlay);
+pointer-events: auto;
+}
+
+/* Ensure no clicks pass to the collage while overlay is open */
+html.search-open .floor-selector,
+body.search-open .floor-selector,
+html.overlay-open .floor-selector,
+body.overlay-open .floor-selector { pointer-events: none; }
