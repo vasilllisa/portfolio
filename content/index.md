@@ -8,6 +8,7 @@ tags:
   - level-design
   - narrative-design
 ---
+---
 ## **Welcome**
 
 <span id="greeting">Good day!</span> You are here, by intent or by chance, and this site is a record of how I work.
