@@ -24,6 +24,8 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 
+import RightTags from "./RightTags"
+
 export {
   ArticleTitle,
   Content,
@@ -50,4 +52,6 @@ export {
   Comments,
   Flex,
   ConditionalRender,
+  
+  RightTags,
 }

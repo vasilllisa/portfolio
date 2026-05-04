@@ -8,8 +8,10 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      //GitHub: "https://github.com/jackyzha0/quartz",
+      //"Discord Community": "https://discord.gg/cRFFHYye7t",
+      LinkedIn: "https://www.linkedin.com/in/vasilisa-shch",
+      Email: "mailto:vasilisa.sh.vl@gmail.com",
     },
   }),
 }
@@ -40,10 +42,12 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer(),
   ],
-  right: [
-    Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
+right: [ 
+    // Small graph on all pages, including index 
+    Component.Graph(), 
+    Component.DesktopOnly(Component.TableOfContents()), 
     Component.Backlinks(),
+    Component.RightTags(), 
   ],
 }
 
@@ -64,5 +68,10 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer(),
   ],
-  right: [],
+  right: [
+    // Keep  graph available on list pages like tags or folders
+    Component.Graph(),
+    Component.DesktopOnly(Component.TableOfContents()),
+    Component.RightTags(),
+  ],
 }

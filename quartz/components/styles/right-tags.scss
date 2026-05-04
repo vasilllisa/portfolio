@@ -1,0 +1,27 @@
+/* Right sidebar tags component */
+#right-tags {
+  margin: 0 0 1rem 0;
+
+  /* Section title, subtle weight and size */
+  .right-tags-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    opacity: 0.8;
+  }
+
+  /* Vertical tag list using existing Quartz TagList markup */
+  .tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  /* Keep each tag chip sized to its text, even when rendered as links or list items */
+  .tags a,
+  .tags .tag,
+  .tags li > a {
+    display: inline-block;
+    width: fit-content;
+  }
+}

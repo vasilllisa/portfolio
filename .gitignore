@@ -8,3 +8,6 @@ tsconfig.tsbuildinfo
 private/
 .replit
 replit.nix
+
+# ignore build output
+public/

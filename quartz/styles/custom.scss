@@ -1,3 +1,395 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+/* ==========================================================
+   Project-specific styles extending Quartz base
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   Project header block: title, summary, team, description, tags
+   ---------------------------------------------------------- */
+.content-meta--project {
+  margin-bottom: 2.25rem;
+
+  .project-title {
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+
+  .project-line2,
+  .project-team {
+    color: var(--darkgray);
+    margin: 0 0 1rem;
+  }
+
+  .project-line2 {
+    font-size: 0.95rem;
+  }
+
+  .project-desc {
+    margin: 0 0 1.25rem;
+    max-width: 64ch;
+  }
+
+  .project-tags {
+    display: grid;
+    gap: 0.6rem;
+
+    &__software {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+
+      .label {
+        color: var(--darkgray);
+        font-weight: 700;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+      }
+    }
+  }
+}
+
+/* ----------------------------------------------------------
+   Tag chip for ContentMeta
+   ---------------------------------------------------------- */
+.qz-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0.32rem 0.6rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--lightgray) 25%, var(--light));
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.qz-tag--small {
+  font-size: 0.8rem;
+  opacity: 0.95;
+}
+
+/* ----------------------------------------------------------
+   Hide default Quartz tag lists when custom header is present
+   ---------------------------------------------------------- */
+article:has(.content-meta--project) ul.tags { 
+  display: none !important; 
+}
+
+.content-meta--project ~ ul.tags { 
+  display: none !important; 
+}
+
+.popover .popover-inner ul.tags,
+.popover .section > .tags { 
+  display: none !important; 
+}
+
+/* ==========================================================
+   Page title with icon, animated highlight fill
+   ========================================================== */
+.page-title {
+  margin: 0;
+  text-align: center;
+}
+
+.page-title-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Masked icon, base color plus animated highlight layer filling upward */
+.page-title-icon.is-masked {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+
+  /* Layer 1, highlight, starts at 0% height, grows to 100% on hover.
+     Layer 2, base, full size. */
+  background:
+    linear-gradient(var(--tertiary), var(--tertiary)) bottom / 100% 0 no-repeat,
+    linear-gradient(var(--secondary), var(--secondary)) bottom / 100% 100% no-repeat;
+
+  -webkit-mask: var(--icon-url) no-repeat center / contain;
+  mask: var(--icon-url) no-repeat center / contain;
+
+  transition: background-size 0.35s ease;
+}
+
+.page-title-link:hover .page-title-icon.is-masked {
+  background-size: 100% 100%, 100% 100%;
+}
+
+/* Responsive icon sizes */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-title-icon.is-masked { width: 100px; height: 100px; }
+}
+@media (min-width: 1200px) {
+  .page-title-icon.is-masked { width: 160px; height: 160px; }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .page-title-icon.is-masked {
+    transition: none;
+    background:
+      linear-gradient(var(--tertiary), var(--tertiary)) bottom / 100% 100% no-repeat,
+      linear-gradient(var(--secondary), var(--secondary)) bottom / 100% 100% no-repeat;
+  }
+}
+
+/* ==========================================================
+   CS2 collage component, pure CSS, Quartz v4
+   Floor selector with sticky buttons and responsive image grid
+   ========================================================== */
+
+/* Wrapper and tokens */
+.floor-selector {
+--fs-max: 1200px;
+width: clamp(320px, 80%, var(--fs-max));
+margin-inline: auto;
+
+--fs-fg: var(--text, var(--fg, #111));
+--fs-radius: 12px;
+--fs-gap: 1.25rem;
+
+/* light defaults */
+--fs-bar-bg: rgba(248, 248, 248, 0.92);
+--fs-btn-color: #111;
+--fs-btn-dim: rgba(17, 17, 17, 0.72);
+--fs-active-bg: rgba(0, 0, 0, 0.16);
+--fs-hover-bg: rgba(0, 0, 0, 0.08);
+--fs-caption: rgba(0, 0, 0, 0.58);
+
+/* sticky offset with safe area */
+--fs-stick-top: max(12px, env(safe-area-inset-top));
+}
+
+/* Dark defaults, overridable by site theme */
+@media (prefers-color-scheme: dark) {
+.floor-selector {
+--fs-bar-bg: rgba(16, 16, 20, 0.92);
+--fs-btn-color: #fafafa;
+--fs-btn-dim: rgba(250, 250, 250, 0.74);
+--fs-active-bg: rgba(255, 255, 255, 0.22);
+--fs-hover-bg: rgba(255, 255, 255, 0.12);
+--fs-caption: rgba(255, 255, 255, 0.78);
+}
+}
+
+/* Explicit site theme overrides */
+:where(html, body)[data-theme="light"] .floor-selector,
+:where(html, body).light .floor-selector,
+:where(html, body).theme-light .floor-selector,
+html[saved-theme="light"] .floor-selector {
+--fs-bar-bg: rgba(248, 248, 248, 0.92);
+--fs-btn-color: #111;
+--fs-btn-dim: rgba(17, 17, 17, 0.72);
+--fs-active-bg: rgba(0, 0, 0, 0.16);
+--fs-hover-bg: rgba(0, 0, 0, 0.08);
+--fs-caption: rgba(0, 0, 0, 0.58);
+}
+
+:where(html, body)[data-theme="dark"] .floor-selector,
+:where(html, body).dark .floor-selector,
+:where(html, body).theme-dark .floor-selector,
+html[saved-theme="dark"] .floor-selector {
+--fs-bar-bg: rgba(16, 16, 20, 0.92);
+--fs-btn-color: #fafafa;
+--fs-btn-dim: rgba(250, 250, 250, 0.74);
+--fs-active-bg: rgba(255, 255, 255, 0.22);
+--fs-hover-bg: rgba(255, 255, 255, 0.12);
+--fs-caption: rgba(255, 255, 255, 0.78);
+}
+
+/* Radios hidden, retain state control */
+.floor-selector > input[type="radio"] { display: none; }
+
+/* Sticky button bar, sits above images, below global overlays */
+.floor-selector .selector-buttons {
+position: sticky;
+top: var(--fs-stick-top);
+z-index: var(--z-sticky);
+width: 100%;
+margin: 0 0 0.01rem 0;
+padding: 0.55rem;
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 0.4rem;
+background: var(--fs-bar-bg);
+}
+
+/* Buttons, hover and press */
+.floor-selector .floor-btn {
+padding: 0.65rem 0.9rem;
+border: 0;
+border-radius: 10px;
+background: transparent;
+color: var(--fs-btn-dim);
+font-weight: 700;
+line-height: 1;
+letter-spacing: 0.01em;
+cursor: pointer;
+transition: background 140ms ease, color 140ms ease, transform 80ms ease;
+}
+.floor-selector .floor-btn:hover { background: var(--fs-hover-bg); color: var(--fs-btn-color); }
+.floor-selector .floor-btn:active { transform: translateY(1px); }
+
+/* Checked radio drives selected label */
+#overview-floor:checked ~ .selector-buttons label[for="overview-floor"],
+#garage-floor:checked ~ .selector-buttons label[for="garage-floor"],
+#first-floor:checked ~ .selector-buttons label[for="first-floor"],
+#second-floor:checked ~ .selector-buttons label[for="second-floor"] {
+background: var(--fs-active-bg);
+color: var(--fs-btn-color);
+}
+
+/* Image grid, iso spans two cols, tactical aligns, tighter top-side row gap */
+.floor-selector .image-grid {
+display: grid;
+grid-template-areas:
+"iso iso"
+"top tactical"
+"side tactical";
+grid-template-columns: 1fr 1fr;
+gap: calc(var(--fs-gap) * 0.22) var(--fs-gap);
+}
+
+/* Figure panel, image fills, caption below */
+.floor-selector .panel {
+margin: 0;
+display: grid;
+grid-template-rows: 1fr auto;
+min-height: 0;
+}
+
+/* Images hidden by default, shown per floor, layered under sticky bar */
+.floor-selector .panel img {
+display: none;
+width: 100%;
+height: 100%;
+object-fit: contain;
+border-radius: var(--fs-radius);
+position: relative;
+z-index: var(--z-images);
+}
+
+/* Captions, centered, compact */
+.floor-selector .panel figcaption {
+margin-top: 0.4rem;
+text-align: center;
+font-size: clamp(12px, 1.2vw, 14px);
+color: var(--fs-caption);
+}
+
+/* Grid areas and vertical alignment */
+.floor-selector .panel--iso { grid-area: iso; }
+.floor-selector .panel--topdown { grid-area: top; align-self: start; }
+.floor-selector .panel--side { grid-area: side; align-self: end; }
+.floor-selector .panel--tactical { grid-area: tactical; align-self: stretch; }
+
+/* Reveal matching image set by checked floor */
+#overview-floor:checked ~ .image-grid img.overview { display: block; }
+#garage-floor:checked ~ .image-grid img.garage { display: block; }
+#first-floor:checked ~ .image-grid img.first { display: block; }
+#second-floor:checked ~ .image-grid img.second { display: block; }
+
+/* Mobile 900px, buttons to 2 cols, grid to single column */
+@media (max-width: 900px) {
+.floor-selector { width: 100%; }
+.floor-selector .selector-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.floor-selector .image-grid {
+grid-template-areas:
+"iso"
+"tactical"
+"top"
+"side";
+grid-template-columns: 1fr;
+}
+}
+
+/* Mobile hardening, 768px /
+@media (max-width: 768px) {
+/ Keep site header above custom stickies */
+header, .top, .navbar, .qz-header {
+position: sticky;
+top: 0;
+z-index: auto;
+background: var(--light);
+}
+
+
+
+/* Sidebars not sticky on phones */
+aside, .sidebar, .left-sidebar, .right-sidebar {
+position: static;
+top: auto;
+height: auto;
+z-index: auto;
+}
+
+/* Prevent overflow from text and code blocks */
+.content, .content * {
+min-width: 0;
+max-width: 100%;
+word-break: break-word;
+overflow-wrap: anywhere;
+}
+
+/* Media scales to container */
+img, video, canvas {
+max-width: 100%;
+height: auto;
+}
+
+/* Compact meta and tag rows */
+.content-meta--project .meta-line,
+.content-meta--project .tag-row,
+.qz-tag {
+flex-wrap: wrap;
+row-gap: 0.25rem;
+}
+
+/* Adjust sticky offset on phones */
+@media (max-width: 900px) {
+.floor-selector .selector-buttons {
+top: calc(var(--fs-stick-top) + 75px);
+}}
+
+:root {
+--z-overlay: 1000;
+--z-sticky: 50;
+--z-images: 10;
+}
+
+/* Collage owns its internal stacking context so its children layer predictably */
+.floor-selector { isolation: isolate; }
+
+/* Global overlays stay on top of everything */
+.site-search,
+.global-overlay,
+.modal.is-open,
+.nav-open .nav-overlay {
+position: fixed;
+inset: 0;
+z-index: var(--z-overlay);
+pointer-events: auto;
+}
+
+/* Ensure no clicks pass to the collage while overlay is open */
+html.search-open .floor-selector,
+body.search-open .floor-selector,
+html.overlay-open .floor-selector,
+body.overlay-open .floor-selector { pointer-events: none; }
