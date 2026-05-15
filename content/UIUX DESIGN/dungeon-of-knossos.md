@@ -1,5 +1,5 @@
 ---
-title: "Dungeon of Knossos: Diegetic UI and Pixel Art"
+title: "Dungeon of Knossos: Diegetic Mobile UI"
 start: 2026-01-01
 end: Present
 team: "2"
@@ -199,7 +199,7 @@ Almost every new system risks pulling attention away from the thing that made _D
 
 That tension affects nearly every decision in the project.
 
-More shaders can make the temple feel alive, but they can also introduce visual noise. More shaders can make the temple feel alive, but they can also introduce visual noise. More progression systems can create deeper builds, but they can also overwhelm the immediacy of chaining resources. Not gonna lie, scope creep absolutely got me on this project. Even visually, many parts of the project are still actively being reworked as I continue trying to separate gameplay readability from environmental detail and atmosphere.
+More shaders can make the temple feel alive, but they can also introduce visual noise. More progression systems can create deeper builds, but they can also overwhelm the immediacy of chaining resources. Not gonna lie, scope creep absolutely got me on this project. Even visually, many parts of the project are still actively being reworked as I continue trying to separate gameplay readability from environmental detail and atmosphere.
 
 A lot of the current work revolves around refinement rather than expansion:
 
